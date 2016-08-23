@@ -8,6 +8,7 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -26,6 +27,17 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# rails-bootstrap-forms is a Rails form builder that makes it super easy to
+# create beautiful-looking forms with Twitter Bootstrap 3+. Wraps the standard
+# Rails form helpers so it's practically a drop-in replacement.
+gem 'bootstrap_form'
+
+# FriendlyId is the “Swiss Army bulldozer” of slugging and permalink plugins
+# for ActiveRecord. It allows you to create pretty URL’s and work with
+# human-friendly strings as if they were numeric ids for ActiveRecord models.
+# http://norman.github.io/friendly_id/
+gem 'friendly_id', '~> 5.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
