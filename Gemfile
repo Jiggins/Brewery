@@ -39,6 +39,13 @@ gem 'bootstrap_form'
 # http://norman.github.io/friendly_id/
 gem 'friendly_id', '~> 5.0'
 
+# Easy file attachment management for ActiveRecord
+# https://thoughtbot.com/open-source
+gem 'paperclip'
+
+# Takes your numbers and makes them *fancy*.
+gem 'humanize'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
