@@ -22,37 +22,21 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-3">
-						    <div class="panel panel-default">
-						      <div class="panel-body"><img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"></div>
-						      <div class="panel-footer">Item Name</div>
-						    </div>
-						</div>
-					    <div class="col-md-3">
-						    <div class="panel panel-default">
-						      <div class="panel-body"><img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"></div>
-						      <div class="panel-footer">Item Name</div>
-						    </div>
-						</div>
-						<div class="col-md-3">
-						    <div class="panel panel-default">
-						      <div class="panel-body"><img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"></div>
-						      <div class="panel-footer">Item Name</div>
-						    </div>
-						</div>
-						<div class="col-md-3">
-						    <div class="panel panel-default">
-						      <div class="panel-body"><img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"></div>
-						      <div class="panel-footer">Item Name</div>
-						    </div>
-						</div>
-						<div class="col-md-3">
-						    <div class="panel panel-default">
-						      <div class="panel-body"><img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"></div>
-						      <div class="panel-footer">Item Name</div>
-						    </div>
-						</div>
-					  </div>
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::HotDrinkSitIn').each do |product| %>
+							<div class="col-md-3">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<%= image_tag product.image, class: 'img-responsive', default_url: 'missing.png' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
