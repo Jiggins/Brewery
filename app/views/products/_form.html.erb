@@ -1,52 +1,39 @@
-<%= form_for(product) do |f| %>
+<%= bootstrap_form_for(@product.becomes(Product), url: product_path(@product)) do |f| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= f.label :name %></th>
+        <th><%= f.label :type %></th>
+        <th><%= f.label :price %></th>
+        <th><%= f.label :vat_rate %></th>
+        <th><%= f.label :visible %></th>
+        <th><%= f.label :image %></th>
+      </tr>
+    </thead>
 
-  <div class="field">
-    <%= f.label :slug %>
-    <%= f.text_field :slug %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :vat_rate %>
-    <%= f.text_field :vat_rate %>
-  </div>
-
-  <div class="field">
-    <%= f.label :visible %>
-    <%= f.check_box :visible %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.text_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <tbody>
+      <tr>
+        <td><%= f.text_field   :name, skip_lable: true %></td>
+        <td><%= f.select       :type, Product.types, skip_lable: true %></td>
+        <td><%= f.number_field :price, skip_lable: true %></td>
+        <td><%= f.number_field :vat_rate, skip_lable: true %></td>
+        <td><%= f.check_box    :visible, skip_lable: true %></td>
+        <td><%= f.file_field   :image, skip_lable: true %></td>
+        <td><%= f.submit %></td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
