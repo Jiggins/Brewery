@@ -1,2 +1,6 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.img-responsive {
+	max-height: 100px;
+}
