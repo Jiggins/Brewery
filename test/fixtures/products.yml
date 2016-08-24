@@ -1,0 +1,744 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: Cappucino
+  type: Product::HotDrinkSitIn
+  slug: cappucino
+  price: 3.0
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 21:57:31.780465'
+  updated_at: '2016-08-23 21:57:31.780465'
+two:
+  id: 2
+  name: Espresso
+  type: Product::HotDrinkSitIn
+  slug: espresso
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 21:58:42.944093'
+  updated_at: '2016-08-23 21:58:42.944093'
+three:
+  id: 3
+  name: Latte
+  type: Product::HotDrinkSitIn
+  slug: latte
+  price: 3.0
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:00:14.090829'
+  updated_at: '2016-08-23 22:00:14.090829'
+four:
+  id: 4
+  name: Long Black
+  type: Product::HotDrinkSitIn
+  slug: long-black
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:00:25.880279'
+  updated_at: '2016-08-23 22:02:25.388072'
+five:
+  id: 5
+  name: Flat White
+  type: Product::HotDrinkSitIn
+  slug: flat-white
+  price: 3.0
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:01:07.043397'
+  updated_at: '2016-08-23 22:01:07.043397'
+six:
+  id: 6
+  name: Macchiato
+  type: Product::HotDrinkSitIn
+  slug: macchiato
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:01:33.246160'
+  updated_at: '2016-08-23 22:01:33.246160'
+seven:
+  id: 7
+  name: Cappucino
+  type: Product::HotDrinkTakeOut
+  slug: cappucino-take-out
+  price: 3.0
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.730858'
+  updated_at: '2016-08-23 22:49:06.975216'
+eight:
+  id: 8
+  name: Espresso
+  type: Product::HotDrinkTakeOut
+  slug: espresso-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.736578'
+  updated_at: '2016-08-23 22:49:06.981765'
+nine:
+  id: 9
+  name: Latte
+  type: Product::HotDrinkTakeOut
+  slug: latte-take-out
+  price: 3.0
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.739407'
+  updated_at: '2016-08-23 22:49:06.983999'
+ten:
+  id: 10
+  name: Long Black
+  type: Product::HotDrinkTakeOut
+  slug: long-black-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.742024'
+  updated_at: '2016-08-23 22:49:06.985958'
+eleven:
+  id: 11
+  name: Flat White
+  type: Product::HotDrinkTakeOut
+  slug: flat-white-take-out
+  price: 3.0
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.745202'
+  updated_at: '2016-08-23 22:49:06.987822'
+twelve:
+  id: 12
+  name: Macchiato
+  type: Product::HotDrinkTakeOut
+  slug: macchiato-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:07:16.748062'
+  updated_at: '2016-08-23 22:49:06.989728'
+thirteen:
+  id: 13
+  name: Breakfast Tea
+  type: Product::HotDrinkSitIn
+  slug: breakfast
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.263224'
+  updated_at: '2016-08-23 22:59:10.025850'
+fourteen:
+  id: 14
+  name: Cloud Tea
+  type: Product::HotDrinkSitIn
+  slug: cloud-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.268624'
+  updated_at: '2016-08-23 22:26:37.268624'
+fifteen:
+  id: 15
+  name: Earl Grey
+  type: Product::HotDrinkSitIn
+  slug: earl-grey
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.272059'
+  updated_at: '2016-08-23 22:26:37.272059'
+sixteen:
+  id: 16
+  name: Green Tea
+  type: Product::HotDrinkSitIn
+  slug: green-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.275360'
+  updated_at: '2016-08-23 22:57:39.182905'
+seventeen:
+  id: 17
+  name: Jasmine Tea
+  type: Product::HotDrinkSitIn
+  slug: jasmine-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.278570'
+  updated_at: '2016-08-23 22:57:39.187552'
+eighteen:
+  id: 18
+  name: Lemon Verbana Tea
+  type: Product::HotDrinkSitIn
+  slug: lemon-verbana-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.281530'
+  updated_at: '2016-08-23 22:57:39.190243'
+nineteen:
+  id: 19
+  name: Oolong Tea
+  type: Product::HotDrinkSitIn
+  slug: oolong-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.284626'
+  updated_at: '2016-08-23 22:57:39.192713'
+twenty:
+  id: 20
+  name: Peppermint Tea
+  type: Product::HotDrinkSitIn
+  slug: peppermint-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.287788'
+  updated_at: '2016-08-23 22:57:39.194747'
+twenty-one:
+  id: 21
+  name: Pu-Erh Tea
+  type: Product::HotDrinkSitIn
+  slug: pu-erh-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.290727'
+  updated_at: '2016-08-23 22:57:39.196774'
+twenty-two:
+  id: 22
+  name: Rooibis Tea
+  type: Product::HotDrinkSitIn
+  slug: rooibis-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.293500'
+  updated_at: '2016-08-23 22:57:39.198691'
+twenty-three:
+  id: 23
+  name: White Whale Tea
+  type: Product::HotDrinkSitIn
+  slug: white-whale-tea
+  price: 2.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:26:37.296326'
+  updated_at: '2016-08-23 22:57:39.200709'
+twenty-four:
+  id: 24
+  name: Breakfast Tea
+  type: Product::HotDrinkTakeOut
+  slug: breakfast-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.112315'
+  updated_at: '2016-08-23 22:59:10.029642'
+twenty-five:
+  id: 25
+  name: Cloud Tea
+  type: Product::HotDrinkTakeOut
+  slug: cloud-tea-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.115895'
+  updated_at: '2016-08-23 22:49:06.993398'
+twenty-six:
+  id: 26
+  name: Earl Grey
+  type: Product::HotDrinkTakeOut
+  slug: earl-grey-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.119761'
+  updated_at: '2016-08-23 22:49:06.995279'
+twenty-seven:
+  id: 27
+  name: Green Tea
+  type: Product::HotDrinkTakeOut
+  slug: green-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.123099'
+  updated_at: '2016-08-23 22:58:43.027059'
+twenty-eight:
+  id: 28
+  name: Jasmine Tea
+  type: Product::HotDrinkTakeOut
+  slug: jasmine-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.125931'
+  updated_at: '2016-08-23 22:58:43.030444'
+twenty-nine:
+  id: 29
+  name: Lemon Verbana Tea
+  type: Product::HotDrinkTakeOut
+  slug: lemon-verbana-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.128535'
+  updated_at: '2016-08-23 22:58:43.033149'
+thirty:
+  id: 30
+  name: Oolong Tea
+  type: Product::HotDrinkTakeOut
+  slug: oolong-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.131282'
+  updated_at: '2016-08-23 22:58:43.035740'
+thirty-one:
+  id: 31
+  name: Peppermint Tea
+  type: Product::HotDrinkTakeOut
+  slug: peppermint-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.134048'
+  updated_at: '2016-08-23 22:58:43.037956'
+thirty-two:
+  id: 32
+  name: Pu-Erh Tea
+  type: Product::HotDrinkTakeOut
+  slug: pu-erh-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.136980'
+  updated_at: '2016-08-23 22:58:43.040344'
+thirty-three:
+  id: 33
+  name: Rooibis Tea
+  type: Product::HotDrinkTakeOut
+  slug: rooibis-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.140246'
+  updated_at: '2016-08-23 22:58:43.042436'
+thirty-four:
+  id: 34
+  name: White Whale Tea
+  type: Product::HotDrinkTakeOut
+  slug: white-whale-take-out
+  price: 2.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:10.143610'
+  updated_at: '2016-08-23 22:58:43.044404'
+thirty-five:
+  id: 35
+  name: Hot Chocolate
+  type: Product::HotDrinkTakeOut
+  slug: hot-chocolate-take-out
+  price: 3.0
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:57.679848'
+  updated_at: '2016-08-23 22:49:07.015301'
+thirty-six:
+  id: 36
+  name: Mocha
+  type: Product::HotDrinkTakeOut
+  slug: mocha-take-out
+  price: 3.5
+  vat_rate: 13.5
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:29:57.683691'
+  updated_at: '2016-08-23 22:49:07.017301'
+thirty-seven:
+  id: 37
+  name: Hot Chocolate
+  type: Product::HotDrinkSitIn
+  slug: hot-chocolate
+  price: 3.0
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:30:04.047175'
+  updated_at: '2016-08-23 22:52:51.076910'
+thirty-eight:
+  id: 38
+  name: Mocha
+  type: Product::HotDrinkSitIn
+  slug: mocha
+  price: 3.5
+  vat_rate: 9.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:30:04.051335'
+  updated_at: '2016-08-23 22:52:51.081072'
+thirty-nine:
+  id: 39
+  name: San Pelligrino Lemon
+  type: Product::ColdDrink
+  slug: san-pelligrino-lemon
+  price: 1.5
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:34:35.127624'
+  updated_at: '2016-08-23 22:34:35.127624'
+forty:
+  id: 40
+  name: San Pelligrino Grapefruit
+  type: Product::ColdDrink
+  slug: san-pelligrino-grapefruit
+  price: 1.5
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:34:35.131657'
+  updated_at: '2016-08-23 22:34:35.131657'
+forty-one:
+  id: 41
+  name: San Pelligrino Blood Orange
+  type: Product::ColdDrink
+  slug: san-pelligrino-blood-orange
+  price: 1.5
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:34:35.134280'
+  updated_at: '2016-08-23 22:34:35.134280'
+forty-two:
+  id: 42
+  name: Innocent Smoothie
+  type: Product::ColdDrink
+  slug: innocent-smoothie
+  price: 1.5
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:34:35.136845'
+  updated_at: '2016-08-23 22:34:35.136845'
+forty-three:
+  id: 43
+  name: Sandwich 1
+  type: Product::Food
+  slug: sandwich-1
+  price: 5.0
+  vat_rate: 0.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.631016'
+  updated_at: '2016-08-23 22:35:57.631016'
+forty-four:
+  id: 44
+  name: Sandwich 2
+  type: Product::Food
+  slug: sandwich-2
+  price: 4.75
+  vat_rate: 0.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.634568'
+  updated_at: '2016-08-23 22:35:57.634568'
+forty-five:
+  id: 45
+  name: Sandwich 3
+  type: Product::Food
+  slug: sandwich-3
+  price: 5.5
+  vat_rate: 0.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.637124'
+  updated_at: '2016-08-23 22:35:57.637124'
+forty-six:
+  id: 46
+  name: Brodericks Rocky Road
+  type: Product::Food
+  slug: brodericks-rocky-road
+  price: 2.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.639685'
+  updated_at: '2016-08-23 22:35:57.639685'
+forty-seven:
+  id: 47
+  name: Brodericks Peanut
+  type: Product::Food
+  slug: brodericks-peanut
+  price: 2.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.642600'
+  updated_at: '2016-08-23 22:35:57.642600'
+forty-eight:
+  id: 48
+  name: Brodericks Tiffin
+  type: Product::Food
+  slug: brodericks-tiffin
+  price: 2.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.646149'
+  updated_at: '2016-08-23 22:35:57.646149'
+forty-nine:
+  id: 49
+  name: Brodericks Gluten Free Brownie
+  type: Product::Food
+  slug: brodericks-gluten-free-brownie
+  price: 2.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:35:57.649564'
+  updated_at: '2016-08-23 22:35:57.649564'
+fifty:
+  id: 50
+  name: Aeropress
+  type: Product::Retail
+  slug: aeropress
+  price: 30.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:37:38.390782'
+  updated_at: '2016-08-23 22:37:38.390782'
+fifty-one:
+  id: 51
+  name: filters
+  type: Product::Retail
+  slug: filters
+  price: 5.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:37:38.395413'
+  updated_at: '2016-08-23 22:37:38.395413'
+fifty-two:
+  id: 52
+  name: Kalita
+  type: Product::Retail
+  slug: kalita
+  price: 35.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:37:38.398192'
+  updated_at: '2016-08-23 22:37:38.398192'
+fifty-three:
+  id: 53
+  name: Porter
+  type: Product::Retail
+  slug: porter
+  price: 50.0
+  vat_rate: 23.0
+  visible: t
+  image_file_name: 
+  image_content_type: 
+  image_file_size: 
+  image_updated_at: 
+  created_at: '2016-08-23 22:37:38.401282'
+  updated_at: '2016-08-23 22:37:38.401282'

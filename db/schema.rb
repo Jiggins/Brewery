@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160823120034) do
+=======
+ActiveRecord::Schema.define(version: 20160823160013) do
+>>>>>>> da58c0125461f8ca16bf63e372e21f8903c530f0
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -24,4 +28,23 @@ ActiveRecord::Schema.define(version: 20160823120034) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "products", force: :cascade do |t|
+    t.string   "name",                              null: false
+    t.string   "type"
+    t.string   "slug"
+    t.float    "price",                             null: false
+    t.float    "vat_rate",                          null: false
+    t.boolean  "visible",            default: true
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+>>>>>>> da58c0125461f8ca16bf63e372e21f8903c530f0
 end
