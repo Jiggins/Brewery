@@ -25,10 +25,10 @@
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::HotDrinkSitIn').each do |product| %>
-							<div class="col-md-3">
+							<div class="col-sm-3">
 								<div class="panel panel-default">
 									<div class="panel-body">
-										<%= image_tag product.image, class: 'img-responsive', default_url: 'missing.png' %>
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
 									</div>
 									<div class="panel-footer">
 										<%= product.name %>

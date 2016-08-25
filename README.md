@@ -1,24 +1,36 @@
-# README
+# Brewery Coffee House Maynooth Point of Sale System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+### [Ruby on Rails](http://rubyonrails.org)
+Requires Ruby `>= 2` and Rails `>= 5`: [rubyonrails.org](http://rubyonrails.org)
 
-* Ruby version
+### [ImageMagick](http://www.imagemagick.org/)
+[ImageMagick](http://www.imagemagick.org/) must be installed and can be found
+on the system `PATH`.
 
-* System dependencies
+For Mac OS install it using [Homebrew](http://www.brew.sh/):
 
-* Configuration
+```console
+brew install imagemagick
+```
 
-* Database creation
+For Debian, use
 
-* Database initialization
+```console
+sudo apt-get install imagemagick -y
+```
 
-* How to run the test suite
+## Changing image sizes
+Default image sizes can be found in `app/models/product.rb`
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+has_attached_file :image, styles: {
+  tiny:  '32x32#',
+  thumb: '128x128>',
+  small: '256x256>'
+}
+```
 
-* Deployment instructions
-
-* ...
+Feel free to edit/add another style, then reprocess the images
+with `rake paperclip:refresh CLASS=Product`

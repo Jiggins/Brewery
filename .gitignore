@@ -22,3 +22,6 @@ Gemfile.lock
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Paperclip files
+public/system/product/
