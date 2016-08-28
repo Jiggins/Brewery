@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@product, as: :product) do |f| %>
+<%= bootstrap_form_for(@product) do |f| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -11,29 +11,22 @@
     </div>
   <% end %>
 
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= f.label :name %></th>
-        <th><%= f.label :type %></th>
-        <th><%= f.label :price %></th>
-        <th><%= f.label :vat_rate %></th>
-        <th><%= f.label :visible %></th>
-        <th><%= f.label :image %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td><%= f.text_field   :name, skip_lable: true %></td>
-        <td><%= f.select       :type, Product.types, skip_lable: true %></td>
-        <td><%= f.number_field :price, skip_lable: true %></td>
-        <td><%= f.number_field :vat_rate, skip_lable: true %></td>
-        <td><%= f.check_box    :visible, skip_lable: true %></td>
-        <td><%= f.file_field   :image, skip_lable: true %></td>
-        <td><%= f.submit %></td>
-      </tr>
-    </tbody>
-  </table>
+  <td class="col-xs-1">
+    <% unless @product.type.nil? %>
+      <%= image_tag @product.becomes(@product.type.constantize).image.url(:tiny) %>
+    <% else %>
+      <%= glyphicon('plus') %>
+    <% end %>
+  </td>
+  <td class="col-xs-3"><%= f.text_field   :name, skip_label: true %></td>
+  <td class="col-xs-3"><%= f.select       :type, Product.types, skip_label: true %></td>
+  <td class="col-xs-2"><%= f.number_field :price, skip_label: true %></td>
+  <td class="col-xs-2"><%= f.number_field :vat_rate, skip_label: true %></td>
+  <td class="col-xs-1">
+    <%= f.check_box    :visible, skip_label: true do %>
+      <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+    <% end %>
+  </td>
+  <td class="col-xs-1"><%= f.file_field   :image, skip_label: true, class: 'file-upload', style: 'width: 80px' %></td>
+  <td class="col-xs-1"><%= f.submit 'Update' %></td>
 <% end %>
