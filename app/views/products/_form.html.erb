@@ -13,7 +13,7 @@
 
   <td class="col-xs-1">
     <% unless @product.type.nil? %>
-      <%= image_tag @product.becomes(@product.type.constantize).image.url(:tiny) %>
+      <%= image_tag @product.image.url(:tiny) %>
     <% else %>
       <%= glyphicon('plus') %>
     <% end %>

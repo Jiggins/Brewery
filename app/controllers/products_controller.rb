@@ -4,9 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.map do |product|
-      product.becomes Product
-    end
+    @products = Product.all
   end
 
   # GET /products/1
