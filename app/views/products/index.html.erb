@@ -16,23 +16,29 @@
             <th>Visible</th>
             <th>Image Upload</th>
             <th>Update</th>
+            <th>Delete</th>
           </tr>
         </thead>
 
         <tbody>
-          <% @product = Product.new %>
-          <%= render partial: 'products/form', locals: { product: Product.new } %>
+          <tr>
+            <% @product = Product.new %>
+            <%= render partial: 'products/form', locals: { product: Product.new } %>
+            <td colspan="1"></td>
+          </tr>
 
           <% @products.each do |product| %>
             <tr>
               <% @product = product %>
               <%= render partial: 'products/form', locals: { product: product }  %>
+              <td>
+                <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= glyphicon 'remove' %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
-
-        <tfoot>
-        </tfoot>
       </table>
     </div>
   </div>
