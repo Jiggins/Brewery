@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
+  has_and_belongs_to_many :sales
 
   # https://github.com/thoughtbot/paperclip/wiki/Thumbnail-Generation
   has_attached_file :image,
