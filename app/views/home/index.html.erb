@@ -1,6 +1,7 @@
 <div class="container-fluid">
-	<div class="jumbotron">
-		<h1>The Brewery Coffee House</h1>
+	<div class="container topContainer">
+		<%= image_tag 'logo.png', class: 'pageLogo'%>
+		<h1 id="shopTitle">The Brewery Coffee House</h1>
 		<!--<p id="time">Time</p>
 		<p id="date">Date</p>-->
 	</div>
@@ -8,24 +9,23 @@
 <div class="container">
 	<div class="row">
 		<!-- THE MENU PANEL-->
-		<div class="col-md-8 col-sm-8 col-xs-8">
+		<div class="col-md-10 col-sm-10 col-xs-12">
 			<!-- TABS AT TOP -->
 			<div class="row">
-				<div class="col-md-2 col-sm-2 col-xs-2">T/A HOT DRINKS</div>
-				<div class="col-md-2 col-sm-2 col-xs-2">T/A COLD DRINKS</div>
-				<div class="col-md-2 col-sm-2 col-xs-2">SIT IN HOT DRINKS</div>
-				<div class="col-md-2 col-sm-2 col-xs-2">SIT IN COLD DRINKS</div>
-				<div class="col-md-2 col-sm-2 col-xs-2">FOOD</div>
-				<div class="col-md-2 col-sm-2 col-xs-2">RETAIL</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab1 greyBack">T/A Hot Drinks</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab2">Sit In Hot Drinks</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab3">Cold Drinks</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab4">Food</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab5">Retail</div>
 			</div>
 			<!-- CONTENTS -->
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="row productBlockBackground">
+				<div class="col-md-12 col-sm-12 col-xs-12 ">
 					<div class="row">
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::HotDrinkSitIn').each do |product| %>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		<!-- THE TOTAL AND ITEM LIST PANEL-->
-		<div class="col-md-4 col-sm-4 col-xs-4">
+		<div class="col-md-2 col-sm-2 col-xs-12">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<table class="table table-hover">
@@ -58,8 +58,10 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<button> - </button>
-					<button>Manager Functions</button>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-5 col-sm-5 col-xs-5 bottomButtons"> - </div>
+						<div class="col-md-offset-1  col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
+					</div>
 				</div>
 			</div>
 		</div>
