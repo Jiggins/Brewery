@@ -1,6 +1,82 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+// @import 'products';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Inconsolata|Oswald';
+@mixin displayingInline(){
+	display:inline-block
+}
+@mixin monoFont(){
+	font-family: 'Inconsolata', monospace;
 
+}
+@mixin tabTop(){line-height: 40px;}
+body{
+	// background-color: #a79c80;
+	background-color: #dab38b;
+}
+.topContainer{
+	border-radius:6px;
+	max-height: 150px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 40px;
+	background: linear-gradient(rgba(255,255,255,.5),rgb(194, 128, 61));
+	box-shadow: 3px 3px 1px rgba(0,0,0,.5);
+}
+.pageLogo{
+	height: 100px;
+	@include displayingInline;
+}
+#shopTitle{
+	@include displayingInline;
+	font-family: 'Oswald', sans-serif;
+	font-size: 50px;
+	vertical-align: bottom;
+	margin-left:10px;
+	color: rgba(27,22,12,.8);
+
+}
+.tabs{
+	@include monoFont;	
+	background-color: rgb(238,238,238);
+	border-radius: 4px 4px 0px 0px;
+	text-align: center;
+}
+// .tab3, .tab4, .tab5{
+// 	@include tabTop;
+// }
+.productBlockBackground{
+	background-color: white;
+	padding-top: 20px;
+	border-radius: 0px 4px 4px 4px;
+	margin-bottom: 40px;
+}
 .img-responsive {
 	max-height: 100px;
+	margin:auto;
+}
+.greyBack{
+	background-color: white;
+}
+.panel-footer{
+	@include monoFont;	
+	text-align: center;
+	font-size: 14px;
+	min-height: 60px;
+}
+table{
+	@include monoFont;
+	text-align: center;
+	background-color: white;
+	border-radius: 4px;
+}
+.bottomButtons{
+	@include monoFont;
+	text-align: center;
+	line-height: 40px;
+	color:rgba(27,22,12,.8);
+	background-color: rgb(194, 128, 61);
+	border-radius: 4px;
+	height:40px;
 }
