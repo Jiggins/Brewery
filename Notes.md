@@ -1,3 +1,10 @@
+## Meeting with Jack - Tue 30 Aug 2016 14:18:42 IST
+
+- Separate Tea and Coffee
+- Hot Chocolate in Coffee
+- Loyalty Card button
+- Cash or Credit button - also in model
+
 ## Vat Rates
 
 | Item              | VAT   |

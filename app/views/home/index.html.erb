@@ -24,7 +24,7 @@
 					<div class="row">
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::HotDrinkSitIn').each do |product| %>
+						<% Product.where(type: 'Product::HotDrinkSitIn', visible: true).each do |product| %>
 							<div class="col-sm-3">
 								<div class="panel panel-default">
 									<div class="panel-body">
