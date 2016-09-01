@@ -24,7 +24,22 @@
 					<div class="row">
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::HotDrinkSitIn', visible: true).each do |product| %>
+						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
+							<div class="col-sm-2">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+          </div>
+					<div class="row">
+            <h2>Tea</h2>
+						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
 							<div class="col-sm-2">
 								<div class="panel panel-default">
 									<div class="panel-body">

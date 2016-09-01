@@ -10,15 +10,29 @@ class Product < ApplicationRecord
       thumb: '128x128#',
       small: '256x256>'
     },
+    url: "/system/:class/:style/:slug.:extension",
     default_url: "logo/:style.png"
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def self.types
-    [['Hot Drink Sit In', 'Product::HotDrinkSitIn'],
-     ['Hot Drink Take Out', "Product::HotDrinkTakeOut"],
-     ['Cold Drink', "Product::ColdDrink"],
-     ['Food', "Product::Food"],
-     ['Retail', "Product::Retail"]]
+    [['Coffee Sit In',   'Product::CoffeeSitIn'],
+     ['Coffee Take Out', 'Product::CoffeeTakeOut'],
+     ['Tea Sit In',      'Product::TeaSitIn'],
+     ['Tea Take Out',    'Product::TeaTakeOut'],
+     ['Cold Drink',      "Product::ColdDrink"],
+     ['Food',            "Product::Food"],
+     ['Retail',          "Product::Retail"]]
+  end
+
+  def vat
+    price * (vat_rate / 100)
+  end
+
+  private
+
+  # Use friendly_id slug for image name
+  Paperclip.interpolates :slug  do |attachment, style|
+    attachment.instance.slug
   end
 end

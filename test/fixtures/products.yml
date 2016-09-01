@@ -2,36 +2,36 @@
 
 one:
   id: 1
-  name: Cappucino
-  type: Product::HotDrinkSitIn
+  name: Cappuccino
+  type: Product::CoffeeSitIn
   slug: cappucino
   price: 3.0
   vat_rate: 9.0
   visible: t
-  image_file_name: 
-  image_content_type: 
-  image_file_size: 
-  image_updated_at: 
+  image_file_name: cappucino.png
+  image_content_type: image/png
+  image_file_size: 343476
+  image_updated_at: '2016-08-31 21:55:18.303353'
   created_at: '2016-08-23 21:57:31.780465'
-  updated_at: '2016-08-23 21:57:31.780465'
+  updated_at: '2016-08-31 21:55:18.514513'
 two:
   id: 2
   name: Espresso
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: espresso
   price: 2.5
   vat_rate: 9.0
   visible: t
-  image_file_name: 
-  image_content_type: 
-  image_file_size: 
-  image_updated_at: 
+  image_file_name: cappucino.png
+  image_content_type: image/png
+  image_file_size: 343476
+  image_updated_at: '2016-08-31 21:55:18.518557'
   created_at: '2016-08-23 21:58:42.944093'
-  updated_at: '2016-08-23 21:58:42.944093'
+  updated_at: '2016-08-31 21:55:18.726501'
 three:
   id: 3
   name: Latte
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: latte
   price: 3.0
   vat_rate: 9.0
@@ -45,7 +45,7 @@ three:
 four:
   id: 4
   name: Long Black
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: long-black
   price: 2.5
   vat_rate: 9.0
@@ -59,7 +59,7 @@ four:
 five:
   id: 5
   name: Flat White
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: flat-white
   price: 3.0
   vat_rate: 9.0
@@ -73,7 +73,7 @@ five:
 six:
   id: 6
   name: Macchiato
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: macchiato
   price: 2.5
   vat_rate: 9.0
@@ -87,7 +87,7 @@ six:
 seven:
   id: 7
   name: Cappucino
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: cappucino-take-out
   price: 3.0
   vat_rate: 13.5
@@ -101,7 +101,7 @@ seven:
 eight:
   id: 8
   name: Espresso
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: espresso-take-out
   price: 2.5
   vat_rate: 13.5
@@ -115,7 +115,7 @@ eight:
 nine:
   id: 9
   name: Latte
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: latte-take-out
   price: 3.0
   vat_rate: 13.5
@@ -129,7 +129,7 @@ nine:
 ten:
   id: 10
   name: Long Black
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: long-black-take-out
   price: 2.5
   vat_rate: 13.5
@@ -143,7 +143,7 @@ ten:
 eleven:
   id: 11
   name: Flat White
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: flat-white-take-out
   price: 3.0
   vat_rate: 13.5
@@ -157,7 +157,7 @@ eleven:
 twelve:
   id: 12
   name: Macchiato
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: macchiato-take-out
   price: 2.5
   vat_rate: 13.5
@@ -171,7 +171,7 @@ twelve:
 thirteen:
   id: 13
   name: Breakfast Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: breakfast
   price: 2.5
   vat_rate: 9.0
@@ -185,7 +185,7 @@ thirteen:
 fourteen:
   id: 14
   name: Cloud Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: cloud-tea
   price: 2.5
   vat_rate: 9.0
@@ -199,7 +199,7 @@ fourteen:
 fifteen:
   id: 15
   name: Earl Grey
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: earl-grey
   price: 2.5
   vat_rate: 9.0
@@ -213,7 +213,7 @@ fifteen:
 sixteen:
   id: 16
   name: Green Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: green-tea
   price: 2.5
   vat_rate: 9.0
@@ -227,7 +227,7 @@ sixteen:
 seventeen:
   id: 17
   name: Jasmine Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: jasmine-tea
   price: 2.5
   vat_rate: 9.0
@@ -241,7 +241,7 @@ seventeen:
 eighteen:
   id: 18
   name: Lemon Verbana Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: lemon-verbana-tea
   price: 2.5
   vat_rate: 9.0
@@ -255,7 +255,7 @@ eighteen:
 nineteen:
   id: 19
   name: Oolong Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: oolong-tea
   price: 2.5
   vat_rate: 9.0
@@ -269,7 +269,7 @@ nineteen:
 twenty:
   id: 20
   name: Peppermint Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: peppermint-tea
   price: 2.5
   vat_rate: 9.0
@@ -283,7 +283,7 @@ twenty:
 twenty-one:
   id: 21
   name: Pu-Erh Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: pu-erh-tea
   price: 2.5
   vat_rate: 9.0
@@ -297,7 +297,7 @@ twenty-one:
 twenty-two:
   id: 22
   name: Rooibis Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: rooibis-tea
   price: 2.5
   vat_rate: 9.0
@@ -311,7 +311,7 @@ twenty-two:
 twenty-three:
   id: 23
   name: White Whale Tea
-  type: Product::HotDrinkSitIn
+  type: Product::TeaSitIn
   slug: white-whale-tea
   price: 2.5
   vat_rate: 9.0
@@ -325,7 +325,7 @@ twenty-three:
 twenty-four:
   id: 24
   name: Breakfast Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: breakfast-take-out
   price: 2.5
   vat_rate: 13.5
@@ -339,7 +339,7 @@ twenty-four:
 twenty-five:
   id: 25
   name: Cloud Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: cloud-tea-take-out
   price: 2.5
   vat_rate: 13.5
@@ -353,7 +353,7 @@ twenty-five:
 twenty-six:
   id: 26
   name: Earl Grey
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: earl-grey-take-out
   price: 2.5
   vat_rate: 13.5
@@ -367,7 +367,7 @@ twenty-six:
 twenty-seven:
   id: 27
   name: Green Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: green-take-out
   price: 2.5
   vat_rate: 13.5
@@ -381,7 +381,7 @@ twenty-seven:
 twenty-eight:
   id: 28
   name: Jasmine Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: jasmine-take-out
   price: 2.5
   vat_rate: 13.5
@@ -395,7 +395,7 @@ twenty-eight:
 twenty-nine:
   id: 29
   name: Lemon Verbana Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: lemon-verbana-take-out
   price: 2.5
   vat_rate: 13.5
@@ -409,7 +409,7 @@ twenty-nine:
 thirty:
   id: 30
   name: Oolong Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: oolong-take-out
   price: 2.5
   vat_rate: 13.5
@@ -423,7 +423,7 @@ thirty:
 thirty-one:
   id: 31
   name: Peppermint Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: peppermint-take-out
   price: 2.5
   vat_rate: 13.5
@@ -437,7 +437,7 @@ thirty-one:
 thirty-two:
   id: 32
   name: Pu-Erh Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: pu-erh-take-out
   price: 2.5
   vat_rate: 13.5
@@ -451,7 +451,7 @@ thirty-two:
 thirty-three:
   id: 33
   name: Rooibis Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: rooibis-take-out
   price: 2.5
   vat_rate: 13.5
@@ -465,7 +465,7 @@ thirty-three:
 thirty-four:
   id: 34
   name: White Whale Tea
-  type: Product::HotDrinkTakeOut
+  type: Product::TeaTakeOut
   slug: white-whale-take-out
   price: 2.5
   vat_rate: 13.5
@@ -479,7 +479,7 @@ thirty-four:
 thirty-five:
   id: 35
   name: Hot Chocolate
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: hot-chocolate-take-out
   price: 3.0
   vat_rate: 13.5
@@ -493,7 +493,7 @@ thirty-five:
 thirty-six:
   id: 36
   name: Mocha
-  type: Product::HotDrinkTakeOut
+  type: Product::CoffeeTakeOut
   slug: mocha-take-out
   price: 3.5
   vat_rate: 13.5
@@ -507,7 +507,7 @@ thirty-six:
 thirty-seven:
   id: 37
   name: Hot Chocolate
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: hot-chocolate
   price: 3.0
   vat_rate: 9.0
@@ -521,7 +521,7 @@ thirty-seven:
 thirty-eight:
   id: 38
   name: Mocha
-  type: Product::HotDrinkSitIn
+  type: Product::CoffeeSitIn
   slug: mocha
   price: 3.5
   vat_rate: 9.0
