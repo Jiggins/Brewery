@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <p id="notice"><%= notice %></p>
+
+      <% if notice %>
+        <%= alert :info do %>
+          <%= notice %>
+        <% end %>
+      <% end %>
 
       <h1>Products</h1>
 

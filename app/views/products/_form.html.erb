@@ -28,5 +28,5 @@
     <% end %>
   </td>
   <td class="col-xs-2"><%= f.file_field   :image, skip_label: true, class: 'file-upload', style: 'width: 80px' %></td>
-  <td class="col-xs-1"><%= f.submit 'Update' %></td>
+  <td class="col-xs-1"><%= f.submit @product.type.nil? ? 'Create' : 'Update' %></td>
 <% end %>
