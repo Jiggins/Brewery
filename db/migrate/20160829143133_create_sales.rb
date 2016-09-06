@@ -1,9 +1,11 @@
 class CreateSales < ActiveRecord::Migration[5.0]
   def change
     create_table :sales do |t|
-      t.float :total
-      t.float :net_total
-      t.float :vat
+      t.decimal :total,     precision: 4, scale: 2
+      t.decimal :net_total, precision: 4, scale: 2
+      t.decimal :vat,       precision: 4, scale: 2
+      t.integer :cash_or_credit, default: 0
+      t.boolean :loyalty_card, default: false
 
       t.timestamps
     end

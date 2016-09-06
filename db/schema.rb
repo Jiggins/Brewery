@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823160013) do
+ActiveRecord::Schema.define(version: 20160829143133) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 20160823160013) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "products_sales", id: false, force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "sale_id"
+    t.index ["product_id"], name: "index_products_sales_on_product_id"
+    t.index ["sale_id"], name: "index_products_sales_on_sale_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.decimal  "total",          precision: 4, scale: 2
+    t.decimal  "net_total",      precision: 4, scale: 2
+    t.decimal  "vat",            precision: 4, scale: 2
+    t.integer  "cash_or_credit",                         default: 0
+    t.boolean  "loyalty_card",                           default: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
 end

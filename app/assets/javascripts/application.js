@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require Chart.bundle
+//= require chartkick
 //= require turbolinks
 //= require_tree .
+
 $(document).ready(function() {
 	// let all the tabs height equal the height of the second tab
     var biggestHeight = $('.tab2').height();

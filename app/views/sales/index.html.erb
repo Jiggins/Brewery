@@ -1,31 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Sales</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Sales</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Total</th>
-      <th>Net total</th>
-      <th>Vat</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>Total</th>
+            <th>Net total</th>
+            <th>Vat</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @sales.each do |sale| %>
-      <tr>
-        <td><%= sale.total %></td>
-        <td><%= sale.net_total %></td>
-        <td><%= sale.vat %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @sales.each do |sale| %>
+            <tr>
+              <td><%= sale.total %></td>
+              <td><%= sale.net_total %></td>
+              <td><%= sale.vat %></td>
+              <td><%= link_to 'Show', sale %></td>
+              <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
+              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<br>
-
-<%= link_to 'New Sale', new_sale_path %>
+      <%= line_chart Sale.week.group_by_day(:created_at) %>
+      <%= line_chart Sale.month.group_by_day(:created_at) %>
+      <%= line_chart Sale.year.group_by_day(:created_at) %>
+      <%= pie_chart Product.group(:type).count %>
+  </div>
+</div>
