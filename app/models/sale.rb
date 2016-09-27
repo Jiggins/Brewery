@@ -3,11 +3,6 @@ class Sale < ApplicationRecord
   before_save :set_totals
   enum cash_or_credit: [:cash, :credit]
 
-  scope :today,  -> { where(created_at: Date.today) }
-  scope :week,   -> { where(created_at: 1.week.ago .. Date.today) }
-  scope :month,  -> { where(created_at: 1.month.ago .. Date.today) }
-  scope :year,   -> { where(created_at: 1.year.ago .. Date.today) }
-
   def self.create_from_products(products)
     raise ArgumentError 'Product list should not be null' if products.nil?
 
@@ -17,9 +12,9 @@ class Sale < ApplicationRecord
     @sale.save
   end
 
-  def week_chart
-    week.map do |s|
-      {name: s.created_at.day, data: s.created_at}
+  [:day, :week, :month, :year].map do |time_period|
+    method = define_singleton_method(:"#{time_period}") do |time = Time.now|
+      where(created_at: time.send(:"beginning_of_#{time_period}") .. time.send(:"end_of_#{time_period}"))
     end
   end
 
