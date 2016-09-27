@@ -36,10 +36,10 @@
 								</div>
 							</div>
 						<% end %>
-          </div>
+					</div>
 					<div class="row">
-            <h2>Tea</h2>
-						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
+						<h2>Tea</h2>
+						<% Product.where(type: 'Product::TeaSitIn', visible: true).each do |product| %>
 							<div class="col-sm-2">
 								<div class="panel panel-default">
 									<div class="panel-body">
@@ -75,7 +75,7 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
 						<div class="col-md-offset-1 col-md-5 col-sm-5 col-xs-5 bottomButtons"> - </div>
-						<div class="col-md-offset-1  col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
+						<div class="col-md-offset-1	col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
 					</div>
 				</div>
 			</div>

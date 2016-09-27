@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to products_url, notice: "#{@product.name} was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { redirect_to products_url, notice: "#{@product.name} could not be created because " }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
