@@ -16,19 +16,4 @@ module SalesHelper
       end
     end
   end
-
-  # format: {name: product.name, data: }
-
-  def product_count
-    product_hash = {}
-    Sale.take(100).each do |sale|
-      sale.products.each do |product|
-        if product_hash[product.slug]
-          product_hash[product.slug] += 1
-        else
-          product_hash[product.slug] = 1
-        end
-      end
-    end
-  end
 end
