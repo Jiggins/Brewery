@@ -1,9 +1,9 @@
 
-<div class="container">
+<div class="container-fluid">
 	
 	<div class="row"><br/>
 		<!-- THE MENU PANEL-->
-		<div class="col-md-8 col-sm-8 col-xs-12">
+		<div class="col-md-9 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 BreweryBanner">
 					<p id="shopTitle1">The</p>
@@ -12,13 +12,12 @@
 			</div><br/>
 			<!-- TABS AT TOP -->
 			<div class="row">
-				<div class="tabs tab1 greyBack">T/A Coffee</div>
-				<div class="tabs tab2">T/A Tea</div>
-				<div class="tabs tab3">Sit in Coffee</div>
-				<div class="tabs tab4">Sit in Tea</div>
-				<div class="tabs tab5">Cold Drinks</div>
-				<div class="tabs tab6">Food</div>
-				<div class="tabs tab7">Retail</div>
+				<div class="tabs tab1 greyBack col-md-2 col-sm-2">T/A Coffee</div>
+				<div class="tabs tab2 col-md-2 col-sm-2">T/A Tea</div>
+				<div class="tabs tab3 col-md-2 col-sm-2">Sit in Coffee</div>
+				<div class="tabs tab4 col-md-2 col-sm-2">Sit in Tea</div>
+				<div class="tabs tab5 col-md-2 col-sm-2">Cold Drinks</div>
+				<div class="tabs tab6 col-md-2 col-sm-2">Food & Retail</div>
 			</div>
 			<!-- CONTENTS -->
 			<div class="row productBlockBackground">
@@ -41,8 +40,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		<!-- THE TOTAL AND ITEM LIST PANEL-->
-		<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="col-md-3 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<table class="table table-hover">
@@ -62,41 +62,40 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-3"><div class="tillBtn">1</div></div>
-						<div class="col-md-3"><div class="tillBtn">2</div></div>
-						<div class="col-md-3"><div class="tillBtn">3</div></div>
-						<div class="col-md-3"><div class="moneyBtn">€5</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">1</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">2</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">3</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="moneyBtn">€5</div></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-3"><div class="tillBtn">4</div></div>
-						<div class="col-md-3"><div class="tillBtn">5</div></div>
-						<div class="col-md-3"><div class="tillBtn">6</div></div>
-						<div class="col-md-3"><div class="moneyBtn">€10</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">4</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">5</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">6</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="moneyBtn">€10</div></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-3"><div class="tillBtn">7</div></div>
-						<div class="col-md-3"><div class="tillBtn">8</div></div>
-						<div class="col-md-3"><div class="tillBtn">9</div></div>
-						<div class="col-md-3"><div class="moneyBtn">€20</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">7</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">8</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">9</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="moneyBtn">€20</div></div>
+					</div><br/>
+					<div class="row"> 
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="cBtn">c</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">0</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="tillBtn">.</div></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><div class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </div></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-3"><div class="cBtn">c</div></div>
-						<div class="col-md-3"><div class="tillBtn">0</div></div>
-						<div class="col-md-3"><div class="tillBtn">.</div></div>
-						<div class="col-md-3"><div class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </div></div>
+						<div class="col-md-12 col-sm-12 col-xs-12"><div class="cashBtn">Cash</div></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-12"><div class="cashBtn">Cash</div></div>
-					</div><br/>
-					<div class="row">
-						<div class="col-md-6"><div class="creditBtn">Credit</div></div>
-						<div class="col-md-6"><div class="LoyaltyBtn">Loyalty Card</div></div>
-						<div class="col-md-offset-1 col-md-5 col-sm-5 col-xs-5 bottomButtons"> - </div>
-						<div class="col-md-offset-1	col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
+						<div class="col-md-6 col-sm-6 col-xs-6"><div class="creditBtn">Credit</div></div>
+						<div class="col-md-6 col-sm-6 col-xs-6"><div class="LoyaltyBtn">Loyalty Card</div></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 

@@ -1,6 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-// @import 'products';
+@import 'products.scss';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import 'https://fonts.googleapis.com/css?family=Inconsolata|Oswald';
 @mixin displayingInline(){
@@ -23,8 +23,8 @@ body{
 .tillBtn{
 	line-height: 62px;
 	text-align: center;
-	width:62px;
-	height:60px;
+	min-width:62px;
+	max-height:60px;
 	background: #A76A3D;
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 2px;
@@ -36,79 +36,81 @@ body{
 .moneyBtn{
 	line-height: 60px;
 	text-align: center;
-	width:62px;
-	height:60px;
-background: #E18C37;
-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
-font-family: AvenirNext-Regular;
-font-size: 32px;
-color: #FFFFFF;
-letter-spacing: 0px;
+	min-width:58px;
+	max-height:60px;
+	background: #E18C37;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
+	font-family: AvenirNext-Regular;
+	font-size: 32px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
 }
 .cBtn{
 	line-height: 60px;
 	text-align: center;
-	width:62px;
-	height:60px;
-/* c: */
-font-family: AvenirNext-Italic;
-font-size: 48px;
-color: #FFFFFF;
-letter-spacing: 0px;
-background: #6C3722;
-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
+	min-width:62px;
+	max-height:60px;
+	/* c: */
+	font-family: AvenirNext-Italic;
+	font-size: 48px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #6C3722;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
 
 }
 .cashBtn{
 	line-height: 60px;
 	text-align: center;
 	heigh:60px;
-/* Cash: */
-font-family: AvenirNext-Regular;
-font-size: 48px;
-color: #FFFFFF;
-letter-spacing: 0px;
-background: #86654C;
-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
+	/* Cash: */
+	font-family: AvenirNext-Regular;
+	font-size: 48px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #86654C;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
 }
 .creditBtn{
 	line-height: 60px;
 	text-align: center;
 	height:60px;
-/* Credit: */
-font-family: AvenirNext-Regular;
-font-size: 20px;
-color: #FFFFFF;
-letter-spacing: 0px;
-background: #613B1F;
-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
+	/* Credit: */
+	font-family: AvenirNext-Regular;
+	font-size: 20px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #613B1F;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
 }
 .LoyaltyBtn{
+	overflow:hidden;
 	line-height: 60px;
 	text-align: center;
 	height:60px;
-/* Loyalty Card: */
-font-family: AvenirNext-Regular;
-font-size: 20px;
-color: #FFFFFF;
-letter-spacing: 0px;
-background: #A16F4B;
-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
+	/* Loyalty Card: */
+	font-family: AvenirNext-Regular;
+	font-size: 20px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #A16F4B;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
 }
 #totalDisplay{
-height: 50px;
-background: rgba(241,239,239,0.93);
-border: 1px solid #F4F0F0;
-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.50);
-border-radius: 2px;
+	height: 50px;
+	background: rgba(255,253,253,0.93);
+	border: 1px solid #F4F0F0;
+	box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
 }
 .BreweryBanner{
-	height:64px;
+	min-height:64px;
+	padding-top: 20px;
 	background: #362A19;
 	border: 1px solid #979797;
 }
@@ -138,19 +140,18 @@ border-radius: 2px;
 }
 .tabs{
 	font-family: AvenirNext-Bold;
-	font-size: 14px;
+	font-size: 16px;
 	color: #4A4646;
 	letter-spacing: 0px;
-	background-color: rgb(238,238,238);
+	background-color: #dbd9d9;
 	border-radius: 4px 4px 0px 0px;
 	text-align: center;
-	line-height: 47px;
-	height:47px;
-	width:102.39px;
-	display: inline-block;
+	padding-top: 15px;
+	min-height:60px;
+	box-shadow: 10px 0 5px -2px #000000;
 }
 .productBlockBackground{
-	background: rgba(241,239,239,0.93);
+	background: rgba(255,253,253,0.80);
 	padding-top: 20px;
 	border-radius: 0px 4px 4px 4px;
 	margin-bottom: 40px;
@@ -163,7 +164,7 @@ border-radius: 2px;
 	margin:auto;
 }
 .greyBack{
-	background-color: white;
+	background: rgba(255,253,253,0.80);
 }
 .panel-footer{
 	font-family: AvenirNext-Regular;
@@ -175,6 +176,9 @@ border-radius: 2px;
 	text-align: center;
 	font-size: 14px;
 	min-height: 40px;
+}
+.whitecog{
+	margin-top: 15px;
 }
 table{
 	font-family: Verdana;
@@ -195,4 +199,9 @@ table{
 	background-color: rgb(194, 128, 61);
 	border-radius: 4px;
 	height:40px;
+}
+
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+	 
 }

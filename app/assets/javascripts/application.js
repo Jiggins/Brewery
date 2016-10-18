@@ -25,6 +25,9 @@ $(document).ready(function() {
     $('.tab3').css({'height':biggestHeight});
     $('.tab4').css({'height':biggestHeight});
     $('.tab5').css({'height':biggestHeight});
+    $('.tab6').css({'height':biggestHeight});
+
+
 
     //change the color of clicked tabs
     $(".tab1").click(function(){
@@ -35,6 +38,8 @@ $(document).ready(function() {
     		$('.tab3').removeClass('greyBack');
     		$('.tab4').removeClass('greyBack');
     		$('.tab5').removeClass('greyBack');
+            $('.tab6').removeClass('greyBack');
+
 	});  
 	 $(".tab2").click(function(){
     	if($(".tab2").hasClass('greyBack')){
@@ -44,6 +49,8 @@ $(document).ready(function() {
     		$('.tab3').removeClass('greyBack');
     		$('.tab4').removeClass('greyBack');
     		$('.tab5').removeClass('greyBack');
+            $('.tab6').removeClass('greyBack');
+
 	}); 
 	$(".tab3").click(function(){
     	if($(".tab3").hasClass('greyBack')){
@@ -53,6 +60,8 @@ $(document).ready(function() {
     		$('.tab2').removeClass('greyBack');
     		$('.tab4').removeClass('greyBack');
     		$('.tab5').removeClass('greyBack');
+            $('.tab6').removeClass('greyBack');
+
 	});  
 	$(".tab4").click(function(){
     	if($(".tab4").hasClass('greyBack')){
@@ -62,6 +71,8 @@ $(document).ready(function() {
     		$('.tab2').removeClass('greyBack');
     		$('.tab3').removeClass('greyBack');
     		$('.tab5').removeClass('greyBack');
+            $('.tab6').removeClass('greyBack');
+
 	}); 
 	$(".tab5").click(function(){
     	if($(".tab5").hasClass('greyBack')){
@@ -71,5 +82,17 @@ $(document).ready(function() {
     		$('.tab2').removeClass('greyBack');
     		$('.tab3').removeClass('greyBack');
     		$('.tab4').removeClass('greyBack');
+            $('.tab6').removeClass('greyBack');
+
 	}); 
+        $(".tab6").click(function(){
+        if($(".tab6").hasClass('greyBack')){
+        }else{  
+        $(this).toggleClass('greyBack')};
+            $('.tab1').removeClass('greyBack');
+            $('.tab2').removeClass('greyBack');
+            $('.tab3').removeClass('greyBack');
+            $('.tab4').removeClass('greyBack');
+            $('.tab5').removeClass('greyBack');
+    }); 
 });
