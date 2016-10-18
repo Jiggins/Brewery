@@ -49,11 +49,6 @@ gem 'humanize'
 # Create beautiful JavaScript charts with one line of Ruby http://chartkick.com
 gem "chartkick"
 
-# ActiveRecord plug in that makes it easy to do group ranges with mysql,
-# postgres, and sqlite
-# https://github.com/HappyFunCorp/dateslices
-gem 'dateslices'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,3 +1,6 @@
+require 'bigdecimal'
+require 'bigdecimal/util'
+
 class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -26,7 +29,7 @@ class Product < ApplicationRecord
   end
 
   def vat
-    price * (vat_rate / 100)
+    (price.to_d * (vat_rate / 100)).to_f
   end
 
   private

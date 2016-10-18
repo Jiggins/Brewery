@@ -4,6 +4,24 @@
 - Hot Chocolate in Coffee
 - Loyalty Card button
 - Cash or Credit button - also in model
+- Make sure there cant be two of the same type in database
+
+## Meeting with Jack - Fri  9 Sep 2016 20:53:56 IST
+- Show transaction id
+    - Start numbering at beginning of day
+
+- Cash up sheet
+    - Web form similar to Cash Sheet Doc
+
+- Stock check
+    - include order number
+
+- Purchases
+    - Description
+    - Shop name
+    - `DateTime`
+    - Visa/Cash
+    - Image of receipt
 
 ## Vat Rates
 
