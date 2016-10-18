@@ -1,22 +1,24 @@
-<div class="container-fluid">
-	<div class="container topContainer">
-		<%= image_tag 'logo.png', class: 'pageLogo'%>
-		<h1 id="shopTitle">The Brewery Coffee House</h1>
-		<!--<p id="time">Time</p>
-		<p id="date">Date</p>-->
-	</div>
-</div>
+
 <div class="container">
-	<div class="row">
+	
+	<div class="row"><br/>
 		<!-- THE MENU PANEL-->
-		<div class="col-md-10 col-sm-10 col-xs-12">
+		<div class="col-md-8 col-sm-8 col-xs-12">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12 BreweryBanner">
+					<p id="shopTitle1">The</p>
+					<p id="shopTitle2">Brewery</p>
+				</div>
+			</div><br/>
 			<!-- TABS AT TOP -->
 			<div class="row">
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab1 greyBack">T/A Hot Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab2">Sit In Hot Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab3">Cold Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab4">Food</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab5">Retail</div>
+				<div class="tabs tab1 greyBack">T/A Coffee</div>
+				<div class="tabs tab2">T/A Tea</div>
+				<div class="tabs tab3">Sit in Coffee</div>
+				<div class="tabs tab4">Sit in Tea</div>
+				<div class="tabs tab5">Cold Drinks</div>
+				<div class="tabs tab6">Food</div>
+				<div class="tabs tab7">Retail</div>
 			</div>
 			<!-- CONTENTS -->
 			<div class="row productBlockBackground">
@@ -25,7 +27,7 @@
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
 								<div class="panel panel-default">
 									<div class="panel-body">
 										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
@@ -36,37 +38,25 @@
 								</div>
 							</div>
 						<% end %>
-          </div>
-					<div class="row">
-            <h2>Tea</h2>
-						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
-							<div class="col-sm-2">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
+			          </div>
+				
 				</div>
 			</div>
 		</div>
 		<!-- THE TOTAL AND ITEM LIST PANEL-->
-		<div class="col-md-2 col-sm-2 col-xs-12">
+		<div class="col-md-4 col-sm-4 col-xs-12">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<table class="table table-hover">
-						<thead><tr><th>TOTAL</th></tr></thead>
+						<thead><tr><th><div id="totalDisplay"></div></th></tr></thead>
 						<tbody>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
+							<tr><td > 
+								<p class="tillList">Cappuccino</p>
+								<div class="tillList"><%=image_tag("/assets/subIcon.svg")%></div>
+								<p class="tillList">1</p>
+								<div class="tillList"><%=image_tag("/assets/addIcon.svg")%></div>
+								</td></tr>
+							<tr><td> </td></tr>
 						</tbody>
 					</table>
 				</div>
@@ -74,8 +64,35 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-offset-1 col-md-5 col-sm-5 col-xs-5 bottomButtons"> - </div>
-						<div class="col-md-offset-1  col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
+						<div class="col-md-3"><div class="tillBtn">1</div></div>
+						<div class="col-md-3"><div class="tillBtn">2</div></div>
+						<div class="col-md-3"><div class="tillBtn">3</div></div>
+						<div class="col-md-3"><div class="moneyBtn">€5</div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-3"><div class="tillBtn">4</div></div>
+						<div class="col-md-3"><div class="tillBtn">5</div></div>
+						<div class="col-md-3"><div class="tillBtn">6</div></div>
+						<div class="col-md-3"><div class="moneyBtn">€10</div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-3"><div class="tillBtn">7</div></div>
+						<div class="col-md-3"><div class="tillBtn">8</div></div>
+						<div class="col-md-3"><div class="tillBtn">9</div></div>
+						<div class="col-md-3"><div class="moneyBtn">€20</div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-3"><div class="cBtn">c</div></div>
+						<div class="col-md-3"><div class="tillBtn">0</div></div>
+						<div class="col-md-3"><div class="tillBtn">.</div></div>
+						<div class="col-md-3"><div class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-12"><div class="cashBtn">Cash</div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-6"><div class="creditBtn">Credit</div></div>
+						<div class="col-md-6"><div class="LoyaltyBtn">Loyalty Card</div></div>
 					</div>
 				</div>
 			</div>
