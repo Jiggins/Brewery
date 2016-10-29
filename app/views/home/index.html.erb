@@ -27,7 +27,7 @@
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
 							<div class="col-sm-3">
-								<div class="panel panel-default">
+								<div class="panel panel-default tillThing">
 									<div class="panel-body">
 										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
 									</div>
@@ -46,7 +46,10 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<table class="table table-hover">
-						<thead><tr><th><div id="totalDisplay"></div></th></tr></thead>
+						<thead>
+							<tr><th><div id="tillTotal"></div></th></tr>
+							<tr><th><div id="tillScreen"></div></th></tr>
+						</thead>
 						<tbody>
 							<tr><td > 
 								<p class="tillList">Cappuccino</p>
@@ -62,28 +65,28 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3 "><button value="1" class="tillBtn num" >1</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3 "><button class="tillBtn num" value="2">2</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3 "><button class="tillBtn num" value="3">3</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num"value="1">1</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="2">2</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="3">3</button></div>
 						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€5</button></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="4">4</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="5">5</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="6">6</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="4">4</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="5">5</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="6">6</button></div>
 						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€10</button></div>
 					</div><br/>
 					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3"><button  class="tillBtn num" value="7">7</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button  class="tillBtn num" value="8">8</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="9">9</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button  class="tillBtn num" value="7">7</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button  class="tillBtn num" value="8">8</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="9">9</button></div>
 						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€20</button ></div>
 					</div><br/>
 					<div class="row"> 
 						<div class="col-md-3 col-sm-3 col-xs-3"><button class="cBtn" id="delete">c</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn zero" value="0">0</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3 period "><button class="tillBtn">.</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn zero num" value="0">0</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 period num"><button class="tillBtn num">.</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn minus"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
 					</div><br/>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12"><div type="button" class="cashBtn" id="eqn-bg">Cash</div></div>
