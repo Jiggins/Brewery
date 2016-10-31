@@ -1,5 +1,5 @@
 module CoreExtensions
-  module DateTime
+  module Time
     def next_hour
       self + 1.hour
     end

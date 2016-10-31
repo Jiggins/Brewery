@@ -2,6 +2,7 @@ class Sale < ApplicationRecord
   has_and_belongs_to_many :products
   before_save :set_totals
   enum cash_or_credit: [:cash, :credit]
+  Time.include CoreExtensions::Time
 
   def self.create_from_products(products)
     raise ArgumentError 'Product list should not be null' if products.nil?
@@ -12,7 +13,16 @@ class Sale < ApplicationRecord
     @sale.save
   end
 
-  [:day, :week, :month, :year].map do |time_period|
+  def self.time_format
+    {
+      day: '%H:%M',
+      week: '%A %d',
+      month: '%b %Y',
+      year: '%Y'
+    }
+  end
+
+  [:hour, :day, :week, :month, :year].map do |time_period|
 
     # Defines methods: day, week, month, year.
     # Each method returns all sales from the beginning of the time period to the
@@ -27,15 +37,36 @@ class Sale < ApplicationRecord
     # Each returns an Enumerator of Sale::ActiveRecord_Relation.
     define_singleton_method :"group_by_#{time_period}" do
       relation = order(:created_at)
+
+      if relation.empty?
+        return [].to_enum
+      end
+
       time = relation.first.created_at.send :"beginning_of_#{time_period}"
       time_end = relation.last.created_at.send :"end_of_#{time_period}"
 
       Enumerator.new do |enum|
         while time <= time_end do
-          enum << where(created_at: time.send(:"beginning_of_#{time_period}") .. time.send(:"end_of_#{time_period}")).order(:created_at)
+          sub_relation = where(created_at: time.send(:"beginning_of_#{time_period}") .. time.send(:"end_of_#{time_period}")).order(:created_at)
+          enum << sub_relation unless sub_relation.empty?
           time = time.send :"next_#{time_period}"
         end
       end
+    end
+
+    define_singleton_method :"product_chart_#{time_period}" do
+      chart_data = {}
+      send(:"group_by_#{time_period}").map do |time|
+        date = time.first.created_at
+        time.product_count.each do |k,v|
+          if chart_data[k]
+            chart_data[k][date] = v
+          else
+            chart_data[k] = {date => v}
+          end
+        end
+      end
+      chart_data.map {|k,v| {name: k, data: v}}.to_a
     end
   end
 

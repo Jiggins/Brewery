@@ -1,5 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
+  before_action :set_date, only: [:index]
 
   # GET /sales
   # GET /sales.json
@@ -65,6 +66,14 @@ class SalesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
       @sale = Sale.find(params[:id])
+    end
+
+    def set_date
+      if params[:date]
+        @date = DateTime.parse params[:date]
+      else
+        @date = DateTime.now
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
