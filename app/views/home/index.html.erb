@@ -1,22 +1,23 @@
+
 <div class="container-fluid">
-	<div class="container topContainer">
-		<%= image_tag 'logo.png', class: 'pageLogo'%>
-		<h1 id="shopTitle">The Brewery Coffee House</h1>
-		<!--<p id="time">Time</p>
-		<p id="date">Date</p>-->
-	</div>
-</div>
-<div class="container">
-	<div class="row">
+	
+	<div class="row"><br/>
 		<!-- THE MENU PANEL-->
-		<div class="col-md-10 col-sm-10 col-xs-12">
+		<div class="col-md-9 col-sm-12 col-xs-12">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12 BreweryBanner">
+					<p id="shopTitle1">The</p>
+					<p id="shopTitle2">Brewery</p>
+				</div>
+			</div><br/>
 			<!-- TABS AT TOP -->
 			<div class="row">
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab1 greyBack">T/A Hot Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab2">Sit In Hot Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab3">Cold Drinks</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab4">Food</div>
-				<div class="col-md-2 col-sm-2 col-xs-2 tabs tab5">Retail</div>
+				<div class="tabs tab1 greyBack col-md-2 col-sm-2">T/A Coffee</div>
+				<div class="tabs tab2 col-md-2 col-sm-2">T/A Tea</div>
+				<div class="tabs tab3 col-md-2 col-sm-2">Sit in Coffee</div>
+				<div class="tabs tab4 col-md-2 col-sm-2">Sit in Tea</div>
+				<div class="tabs tab5 col-md-2 col-sm-2">Cold Drinks</div>
+				<div class="tabs tab6 col-md-2 col-sm-2">Food & Retail</div>
 			</div>
 			<!-- CONTENTS -->
 			<div class="row productBlockBackground">
@@ -25,23 +26,8 @@
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
-							<div class="col-sm-2">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row">
-						<h2>Tea</h2>
-						<% Product.where(type: 'Product::TeaSitIn', visible: true).each do |product| %>
-							<div class="col-sm-2">
-								<div class="panel panel-default">
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing">
 									<div class="panel-body">
 										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
 									</div>
@@ -56,17 +42,22 @@
 			</div>
 		</div>
 		<!-- THE TOTAL AND ITEM LIST PANEL-->
-		<div class="col-md-2 col-sm-2 col-xs-12">
+		<div class="col-md-3 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<table class="table table-hover">
-						<thead><tr><th>TOTAL</th></tr></thead>
+						<thead>
+							<tr><th><div id="tillTotal"></div></th></tr>
+							<tr><th><div id="tillScreen"></div></th></tr>
+						</thead>
 						<tbody>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
-							<tr><td>BLAH</td></tr>
+							<tr><td > 
+								<p class="tillList">Cappuccino</p>
+								<div class="tillList"><%=image_tag("/assets/subIcon.svg")%></div>
+								<p class="tillList">1</p>
+								<div class="tillList"><%=image_tag("/assets/addIcon.svg")%></div>
+								</td></tr>
+							<tr><td> </td></tr>
 						</tbody>
 					</table>
 				</div>
@@ -74,12 +65,40 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-offset-1 col-md-5 col-sm-5 col-xs-5 bottomButtons"> - </div>
-						<div class="col-md-offset-1	col-md-5 col-sm-5 col-xs-5 bottomButtons">Manager</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num"value="1">1</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="2">2</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="3">3</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€5</button></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="4">4</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="5">5</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="6">6</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€10</button></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button  class="tillBtn num" value="7">7</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button  class="tillBtn num" value="8">8</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn num" value="9">9</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn">€20</button ></div>
+					</div><br/>
+					<div class="row"> 
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="cBtn" id="delete">c</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn zero num" value="0">0</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 period num"><button class="tillBtn num">.</button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3"><button class="moneyBtn minus"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12"><div type="button" class="cashBtn" id="eqn-bg">Cash</div></div>
+					</div><br/>
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6"><div type="button" class="creditBtn">Credit</div></div>
+						<div class="col-md-6 col-sm-6 col-xs-6"><div type="button" class="LoyaltyBtn">Loyalty Card</div></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 

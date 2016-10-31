@@ -1,6 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-// @import 'products';
+@import 'products.scss';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import 'https://fonts.googleapis.com/css?family=Inconsolata|Oswald';
 @mixin displayingInline(){
@@ -13,63 +13,187 @@
 @mixin tabTop(){line-height: 40px;}
 body{
 	// background-color: #a79c80;
-	background-color: #dab38b;
+	// background-color: #dab38b;
+	background-image: url("CoffeeBeansBackground.jpg");
+	background-size:100%;
 }
-.topContainer{
-	border-radius:6px;
-	max-height: 150px;
-	padding-bottom: 10px;
-	margin-top: 10px;
-	margin-bottom: 40px;
-	background: linear-gradient(rgba(255,255,255,.5),rgb(194, 128, 61));
-	box-shadow: 3px 3px 1px rgba(0,0,0,.5);
+// .whitecog{
+// 	background-color: red;
+// }
+.tillBtn{
+	line-height: 62px;
+	text-align: center;
+	min-width:62px;
+	max-height:60px;
+	background: #A76A3D;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
+	font-family: AvenirNext-Italic;
+	font-size: 36px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+}
+.moneyBtn{
+	line-height: 60px;
+	text-align: center;
+	min-width:58px;
+	max-height:60px;
+	background: #E18C37;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
+	font-family: AvenirNext-Regular;
+	font-size: 32px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+}
+.cBtn{
+	line-height: 60px;
+	text-align: center;
+	min-width:62px;
+	max-height:60px;
+	/* c: */
+	font-family: AvenirNext-Italic;
+	font-size: 48px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #6C3722;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
+
+}
+.cashBtn{
+	line-height: 60px;
+	text-align: center;
+	heigh:60px;
+	/* Cash: */
+	font-family: AvenirNext-Regular;
+	font-size: 48px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #86654C;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
+}
+.creditBtn{
+	line-height: 60px;
+	text-align: center;
+	height:60px;
+	/* Credit: */
+	font-family: AvenirNext-Regular;
+	font-size: 20px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #613B1F;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
+}
+.LoyaltyBtn{
+	overflow:hidden;
+	line-height: 60px;
+	text-align: center;
+	height:60px;
+	/* Loyalty Card: */
+	font-family: AvenirNext-Regular;
+	font-size: 20px;
+	color: #FFFFFF;
+	letter-spacing: 0px;
+	background: #A16F4B;
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 3px;
+}
+#totalDisplay{
+	height: 50px;
+	background: rgba(255,253,253,0.93);
+	border: 1px solid #F4F0F0;
+	box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.50);
+	border-radius: 2px;
+}
+.BreweryBanner{
+	min-height:64px;
+	padding-top: 20px;
+	background: #362A19;
+	border: 1px solid #979797;
+}
+#shopTitle1, #shopTitle2{
+	display: inline-block;
+}
+#shopTitle1{
+	// line-height: 64px;
+	margin-left: 50px;
+	margin-top: 5px;
+	font-family: SavoyeLetPlain;
+	font-size: 55px;
+	color: #FFFFFF;
+	letter-spacing: 0px;	
+}
+#shopTitle2{
+	line-height: 64px;
+	font-family: Copperplate-Bold;
+	font-size: 64px;
+	color: #A1957D;
+	letter-spacing: 0px;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.50);
 }
 .pageLogo{
 	height: 100px;
 	@include displayingInline;
 }
-#shopTitle{
-	@include displayingInline;
-	font-family: 'Oswald', sans-serif;
-	font-size: 50px;
-	vertical-align: bottom;
-	margin-left:10px;
-	color: rgba(27,22,12,.8);
-
-}
 .tabs{
-	@include monoFont;	
-	background-color: rgb(238,238,238);
+	font-family: AvenirNext-Bold;
+	font-size: 16px;
+	color: #4A4646;
+	letter-spacing: 0px;
+	background-color: #dbd9d9;
 	border-radius: 4px 4px 0px 0px;
 	text-align: center;
+	padding-top: 15px;
+	min-height:60px;
+	box-shadow: 10px 0 5px -2px #000000;
 }
-// .tab3, .tab4, .tab5{
-// 	@include tabTop;
-// }
 .productBlockBackground{
-	background-color: white;
+	background: rgba(255,253,253,0.80);
 	padding-top: 20px;
 	border-radius: 0px 4px 4px 4px;
 	margin-bottom: 40px;
+}
+.tillList{
+	display: inline-block;
 }
 .img-responsive {
 	max-height: 100px;
 	margin:auto;
 }
 .greyBack{
-	background-color: white;
+	background: rgba(255,253,253,0.80);
 }
 .panel-footer{
-	@include monoFont;	
+	font-family: AvenirNext-Regular;
+	font-size: 14px;
+	color: #4A4646;
+	letter-spacing: 0px;
+	background-color: white;
+	border:none;
 	text-align: center;
 	font-size: 14px;
-	min-height: 60px;
+	min-height: 40px;
+}
+.whitecog{
+	margin-top: 15px;
 }
 table{
-	@include monoFont;
+	font-family: Verdana;
+	font-size: 14px;
+	color: #040404;
+	letter-spacing: 0px;
 	text-align: center;
-	background-color: white;
+	background: rgba(241,239,239,0.93);
+	border: 1px solid #979797;
+	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
 	border-radius: 4px;
+}
+button{
+	border:none;
+	// outline:none;
 }
 .bottomButtons{
 	@include monoFont;
@@ -79,4 +203,9 @@ table{
 	background-color: rgb(194, 128, 61);
 	border-radius: 4px;
 	height:40px;
+}
+
+$breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+	 
 }
