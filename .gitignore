@@ -25,3 +25,6 @@ Gemfile.lock
 
 # Paperclip files
 public/system/product/
+
+# System files
+.DS_Store
