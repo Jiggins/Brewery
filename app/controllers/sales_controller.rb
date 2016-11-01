@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   before_action :set_date, only: [:index]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   # GET /sales
   # GET /sales.json
@@ -25,12 +26,14 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    @sale = Sale.new(sale_params)
+    products = Product.find(params[:sale][:ids])
+    credit = params[:sale][:credit]
+    loyalty_card = params[:sale][:loyalty_card]
 
     respond_to do |format|
-      if @sale.save
+      if @sale = Sale.create_from_products(products, credit, loyalty_card)
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render :show, status: :created, location: @sale }
+        format.json { render json: @sale.to_json, status: :ok }
       else
         format.html { render :new }
         format.json { render json: @sale.errors, status: :unprocessable_entity }
@@ -78,6 +81,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:total, :net_total, :vat)
+      params.require(:sale).permit(:ids, :cash_or_credit, :loyalty_card)
     end
 end

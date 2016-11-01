@@ -4,13 +4,17 @@ class Sale < ApplicationRecord
   enum cash_or_credit: [:cash, :credit]
   Time.include CoreExtensions::Time
 
-  def self.create_from_products(products)
+  def self.create_from_products(products, credit = nil, loyalty_card = nil)
     raise ArgumentError 'Product list should not be null' if products.nil?
 
     @sale = Sale.new
+
     @sale.products << products
+    @sale.loyalty_card = loyalty_card || false
+    @sale.cash_or_credit = credit ? :credit : :cash
 
     @sale.save
+    return @sale
   end
 
   def self.time_format
