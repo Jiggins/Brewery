@@ -21,6 +21,7 @@
 var products = {};
 var list = [];
 var loyalty = false;
+var countLoyalty =1;
 
 $(document).ready(function() {
 
@@ -265,7 +266,14 @@ $.when(getProducts()).done(function() {
 
 // LOYALTY CARD USED TO PAY
    $('.LoyaltyBtn').click(function(){
-        loyalty = true;
+        countLoyalty ++;
+        if(countLoyalty % 2 ==0){
+            loyalty = true;
+            $('.LoyaltyBtn').css({"background":"#E18C37"});
+        }else {
+            $('.LoyaltyBtn').css({"background":"#A16F4B"});
+            loyalty = false;
+        }
    });
 
 //MANAGER FUNCTIONS
