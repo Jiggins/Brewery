@@ -156,6 +156,26 @@ function getProducts() {
   });
 }
 
+// POST record of sale
+// credit = true -> Credit card transaction
+// credit = false -> Cash transaction
+function postSale(credit) {
+  $.ajax({
+    type: "POST",
+    url: "sales.json",
+    data: {"sale": {"ids": list, "loyalty_card": loyalty, "credit": credit}},
+    dataType: "json",
+    success: function(sale) {
+      console.log('id: ' + sale.id);
+      console.log('net_total: ' + sale.net_total);
+      console.log('total: ' + sale.total);
+      console.log('vat: ' + sale.vat);
+      console.log('cash_or_credit: ' + sale.cash_or_credit);
+      console.log('loyalty_card: ' + sale.loyalty_card);
+    }
+  });
+}
+
 $.when(getProducts()).done(function() {
   //FUNCTION TO ADD & SUBTRACT ALL ITEMS IN THE TILL LIST 
 
@@ -240,6 +260,17 @@ $.when(getProducts()).done(function() {
     listTotal = Number($('#tillTotal').text());
     listTotal = screenTotal - listTotal;
     $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+
+    //POST record of sale to server
+    postSale(false);
+  });
+
+  $('.creditBtn').click(function(){
+    listTotal = Number($('#tillTotal').text());
+    $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
+
+    //POST record of sale to server
+    postSale(true);
   });
 
  $('#5euro').click(function(){
