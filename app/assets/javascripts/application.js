@@ -19,9 +19,11 @@
 //= require_tree .
 
 var products = {};
+var list = [];
+var loyalty = false;
 
 $(document).ready(function() {
-    // $('#tillScreen').text('till screen');
+
 	// let all the tabs height equal the height of the second tab
     var biggestHeight = $('.tab2').height();
     $('.tab1').css({'height':biggestHeight});
@@ -30,10 +32,18 @@ $(document).ready(function() {
     $('.tab5').css({'height':biggestHeight});
     $('.tab6').css({'height':biggestHeight});
 
-
+    //onload show first tab contents
+        $('#TACoffee').show();
+        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
 
     //change the color of clicked tabs
     $(".tab1").click(function(){
+
+        //show contents of selected tab
+        $('#TACoffee').show();
+        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab1").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -45,6 +55,12 @@ $(document).ready(function() {
 
 	});  
 	 $(".tab2").click(function(){
+
+        //show contents of selected tab
+        $('#TATea').show();
+        $('#TACoffee').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab2").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -56,6 +72,12 @@ $(document).ready(function() {
 
 	}); 
 	$(".tab3").click(function(){
+
+        //show contents of selected tab
+        $('#SICoffee').show();
+        $('#TACoffee').add('#TATea').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab3").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -67,6 +89,12 @@ $(document).ready(function() {
 
 	});  
 	$(".tab4").click(function(){
+
+        //show contents of selected tab
+        $('#SITea').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab4").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -78,6 +106,12 @@ $(document).ready(function() {
 
 	}); 
 	$(".tab5").click(function(){
+
+        //show contents of selected tab
+        $('#ColdDrinks').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab5").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -89,6 +123,12 @@ $(document).ready(function() {
 
 	}); 
         $(".tab6").click(function(){
+
+        //show contents of selected tab
+        $('#FoodRetail').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').hide();
+
+        //change the color of clicked tabs
         if($(".tab6").hasClass('greyBack')){
         }else{  
         $(this).toggleClass('greyBack')};
@@ -105,7 +145,7 @@ function getProducts() {
   return $.ajax({
     type: "GET",
     dataType: "json",
-    url: 'http://localhost:3000/products.json',
+    url: 'products.json',
     success: function(data) {
       products = data;
     },
@@ -128,7 +168,8 @@ $.when(getProducts()).done(function() {
   $('div').click(function(){
 
     if($(this).hasClass('minus')){//minus function now active
-      till = parseFloat($('#tillTotal').text()); //get value of till total
+
+      till = Number($('#tillTotal').text()); //get value of till total
       count++;
 
       $('div').click(function(){
@@ -137,21 +178,27 @@ $.when(getProducts()).done(function() {
           if($(this).hasClass('tillThing')){
 
             //subtract item value from total
-            var sub = parseFloat($(this).text());
-            till = parseFloat($('#tillTotal').text());
+            var productID = $(this).attr('id');
+            var sub = products[productID].price;
+            var prodname = products[productID].name;
+            list.push(productID);
+
+
+            till = Number($('#tillTotal').text());
             till -= sub;
 
             if(till<0){
               $('#tillTotal').html("0.00");
             }
             else{
-              $('#tillTotal').html(till.toFixed(2));
+              $('#tillTotal').html(till);
             }
 
             count++;
 
             //mark item as removed from list
-            $('#tillList').append("- " + $(this).attr('name') + "<br/>");
+            $('#tillList1').append("- " + prodname + '<span class="righPrice">€' + sub +'</span><br/>');
+
           }
         }
 
@@ -161,28 +208,71 @@ $.when(getProducts()).done(function() {
     else if($(this).hasClass('tillThing') && (count % 2 != 0)){ //add function
 
       //fist add the item to the list
-      $('#tillList').append($(this).attr('name') + "<br/>");
+       var productID = $(this).attr('id');
+       var price = products[productID].price;
+       var name = products[productID].name;
+      $('#tillList1').append( name + '<span class="righPrice">€' + price +'</span><br/>'); //change the html for this to display
+      list.push(productID);
+      //alert(list);
 
       //then add together the totals
-      var add = parseFloat($(this).text());
-      till = parseFloat($('#tillTotal').text()); 
+      var add =  products[productID].price;
+      till = Number($('#tillTotal').text()); 
       till += add;
-      $('#tillTotal').html(till.toFixed(2));
+      $('#tillTotal').html(till);
     }
   });
   //ENTER CASH TO TILL SCREEN
   $('div').click(function(){
     if($(this).hasClass('num')){
-      // alert('num');
       $('#tillScreen').append($(this).text());
     }
+  });
+   $('#cBtn').click(function(){
+        screenTotal = $('#tillScreen').text();
+        var out = screenTotal.substring(0,screenTotal.length-1);
+         $('#tillScreen').html(out);
   });
 
   //CALCULATE THE CHANGE TO BE GIVEN TO CUSTOMER
   $('.cashBtn').click(function(){
-    screenTotal = parseFloat($('#tillScreen').text());
-    listTotal = parseFloat($('#tillTotal').text());
+    screenTotal = Number($('#tillScreen').text());
+    listTotal = Number($('#tillTotal').text());
     listTotal = screenTotal - listTotal;
     $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
   });
+
+ $('#5euro').click(function(){
+    screenTotal = 5.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+  });
+
+  $('#10euro').click(function(){
+    screenTotal = 10.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+  });
+
+   $('#20euro').click(function(){
+    screenTotal = 20.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+  });
+
+// LOYALTY CARD USED TO PAY
+   $('.LoyaltyBtn').click(function(){
+        loyalty = true;
+   });
+
+//MANAGER FUNCTIONS
+    $('#prodIntentory').click(function(){
+        window.location='http://localhost:3000/products';
+    });
+    $('#prodSales').click(function(){
+        window.location='http://localhost:3000/sales';
+    });
 });
