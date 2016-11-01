@@ -17,9 +17,22 @@ body{
 	background-image: url("CoffeeBeansBackground.jpg");
 	background-size:100%;
 }
+.modal-content{
+	background: rgba(255,253,253,0.80);
+}
+.modalbtn {
+	margin-right: 5px;
+}
 button{
 	cursor:pointer;
 	outline:none;
+}
+
+.righPrice{
+	display:block;
+	float:right;
+	text-align: right;
+	margin-right: 10px;
 }
 .euro{
 	font-size: 16px;

@@ -32,10 +32,18 @@ $(document).ready(function() {
     $('.tab5').css({'height':biggestHeight});
     $('.tab6').css({'height':biggestHeight});
 
-
+    //onload show first tab contents
+        $('#TACoffee').show();
+        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
 
     //change the color of clicked tabs
     $(".tab1").click(function(){
+
+        //show contents of selected tab
+        $('#TACoffee').show();
+        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab1").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -47,6 +55,12 @@ $(document).ready(function() {
 
 	});  
 	 $(".tab2").click(function(){
+
+        //show contents of selected tab
+        $('#TATea').show();
+        $('#TACoffee').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab2").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -58,6 +72,12 @@ $(document).ready(function() {
 
 	}); 
 	$(".tab3").click(function(){
+
+        //show contents of selected tab
+        $('#SICoffee').show();
+        $('#TACoffee').add('#TATea').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab3").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -69,6 +89,12 @@ $(document).ready(function() {
 
 	});  
 	$(".tab4").click(function(){
+
+        //show contents of selected tab
+        $('#SITea').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#ColdDrinks').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab4").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -80,6 +106,12 @@ $(document).ready(function() {
 
 	}); 
 	$(".tab5").click(function(){
+
+        //show contents of selected tab
+        $('#ColdDrinks').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#FoodRetail').hide();
+
+        //change the color of clicked tabs
     	if($(".tab5").hasClass('greyBack')){
     	}else{	
     	$(this).toggleClass('greyBack')};
@@ -91,6 +123,12 @@ $(document).ready(function() {
 
 	}); 
         $(".tab6").click(function(){
+
+        //show contents of selected tab
+        $('#FoodRetail').show();
+        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').hide();
+
+        //change the color of clicked tabs
         if($(".tab6").hasClass('greyBack')){
         }else{  
         $(this).toggleClass('greyBack')};
@@ -159,7 +197,7 @@ $.when(getProducts()).done(function() {
             count++;
 
             //mark item as removed from list
-            $('#tillList1').append("- " + prodname+ "<br/>");
+            $('#tillList1').append("- " + prodname + '<span class="righPrice">€' + sub +'</span><br/>');
 
           }
         }
@@ -173,9 +211,9 @@ $.when(getProducts()).done(function() {
        var productID = $(this).attr('id');
        var price = products[productID].price;
        var name = products[productID].name;
-      $('#tillList1').append(name + '<br/>'); //change the html for this to display
+      $('#tillList1').append( name + '<span class="righPrice">€' + price +'</span><br/>'); //change the html for this to display
       list.push(productID);
-      alert(list);
+      //alert(list);
 
       //then add together the totals
       var add =  products[productID].price;
@@ -229,4 +267,12 @@ $.when(getProducts()).done(function() {
    $('.LoyaltyBtn').click(function(){
         loyalty = true;
    });
+
+//MANAGER FUNCTIONS
+    $('#prodIntentory').click(function(){
+        window.location='http://localhost:3000/products';
+    });
+    $('#prodSales').click(function(){
+        window.location='http://localhost:3000/sales';
+    });
 });

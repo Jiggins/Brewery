@@ -22,7 +22,39 @@
 			<!-- CONTENTS -->
 			<div class="row productBlockBackground">
 				<div class="col-md-12 col-sm-12 col-xs-12 ">
-					<div class="row">
+					<div class="row" id="TACoffee">
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::CoffeeTakeOut', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div id=<%= product.id %> class="panel panel-default tillThing">
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="row" id="TATea">
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::TeaTakeOut', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing" id=<%= product.id %>>
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="row" id="SICoffee">
 						<%# See the Product#types in #%>
 						<%# app/models/product.rb for a list of types. #%>
 						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
@@ -38,6 +70,86 @@
 							</div>
 						<% end %>
 					</div>
+					<div class="row" id="SITea">
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::TeaSitIn', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing" id=<%= product.id %>>
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="row" id="ColdDrinks">
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::ColdDrink', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing" id=<%= product.id %>>
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="row" id="FoodRetail">
+						<%# See the Product#types in #%>
+						<%# app/models/product.rb for a list of types. #%>
+						<% Product.where(type: 'Product::Retail', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing" id=<%= product.id %>>
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+						<% Product.where(type: 'Product::Food', visible: true).each do |product| %>
+							<div class="col-sm-3">
+								<div class="panel panel-default tillThing" id=<%= product.id %>>
+									<div class="panel-body">
+										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+									</div>
+									<div class="panel-footer">
+										<%= product.name %>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				  <!-- Modal -->
+				  <div class="modal fade" id="managerModal" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title text-center">MANAGER OPTIONS</h4>
+				        </div>
+				        <div class="modal-body text-center">
+				          <button class="modalbtn creditBtn num minus" data-dismiss="modal">Remove Item From Transaction</button>
+				          <button class="modalbtn LoyaltyBtn num" id="prodIntentory" data-dismiss="modal">Product Inventory</button>
+				          <button class="modalbtn creditBtn num" id="prodSales" data-dismiss="modal">Sales</button>
+
+				        </div>
+				      </div>
+				      
+				    </div>
+				  </div>
 				</div>
 			</div>
 		</div>
@@ -67,7 +179,7 @@
 						<div class="col-md-3 col-sm-3 col-xs-3" id="cBtn"><button class="cBtn" id="delete">c</button></div>
 						<div class="col-md-3 col-sm-3 col-xs-3 num"><button class="tillBtn zero num" value="0">0</button></div>
 						<div class="col-md-3 col-sm-3 col-xs-3 period num"><button class="tillBtn num">.</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3 minus"><button class="moneyBtn minus"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
+						<div class="col-md-3 col-sm-3 col-xs-3 minus" data-toggle="modal" data-target="#managerModal"><button class="moneyBtn minus"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
 					</div><br/>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12"><div type="button" class="cashBtn" id="eqn-bg">Cash</div></div>
