@@ -74,16 +74,16 @@ class Sale < ApplicationRecord
     end
   end
 
-  # Returns a hash mapping product to total number sold
   def self.product_count
     product_hash = {}
-    find_each do |sale|
-      sale.products.find_each do |product|
-        if product_hash[product.slug]
-          product_hash[product.slug] += 1
-        else
-          product_hash[product.slug] = 1
-        end
+    names = Product.pluck(:id, :name).to_h
+    ids = find_each.map(&:id)
+
+    ProductSale.where(sale_id: ids).pluck(:product_id).find_all do |product_id|
+      if product_hash[names[product_id]]
+        product_hash[names[product_id]] += 1
+      else
+        product_hash[names[product_id]] = 1
       end
     end
     product_hash

@@ -48,7 +48,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <%# <%= line_chart year_chart %>
-              <%= line_chart Sale.year(@date).product_chart_month.take 20 %>
+              <%= line_chart Sale.year(@date).product_chart_week.take 20 %>
             </div>
             <div class="panel-footer">
               Year: <%= 1.year.ago.strftime '%A %b %Y' %> - <%= Date.today.strftime '%A %b %Y' %>
