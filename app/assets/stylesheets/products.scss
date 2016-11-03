@@ -3,11 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-h1{
-	color:red
+
+#productTitle, #salesTitle{
+	color:#742E0D;
+	font-size: 60px;
 }
-#productTitle{
+.textFieldSales{
+	font-family: Verdana;
+}
+.updateSalesBtn{
+	border-radius: 2px;
+	border:none;
 	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color:white;
+	background: #742E0D;
+}
+.titles{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background:#DDDDDD;
+	border-radius: 3px;
 	margin-bottom: 20px;
-	color:#FFFFFF;
+	text-align: center;
+
+}
+.popUpTitles {
+	color:#742E0D;
 }

@@ -1,19 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class= "panel-group col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">
+ <div class="panel panel-default" style="margin-top:20px; padding-top:10px; background:rgba(255,253,253,0.80);">
+ 	<div class="panel-heading">
+ 		<h1 class="popUpTitles text-center">Show Sale</h1>
+ 	</div>
+  <div class="panel-body">
+  	<p>
+	  <strong class="col-sm-4">Total:</strong>
+	  <%= @sale.total %>
+	</p>
+	<p>
+	  <strong class="col-sm-4">Net total:</strong>
+	  <%= @sale.net_total %>
+	</p>
+	<p>
+	  <strong class="col-sm-4">Vat:</strong>
+	  <%= @sale.vat %>
+	</p>
+  </div>
+  <div class="panel-footer">
+	<%= link_to 'Edit', edit_sale_path(@sale) %> |
+	<%= link_to 'Back', sales_path %>
+  </div>
+ </div>
+</div>
 
-<p>
-  <strong>Total:</strong>
-  <%= @sale.total %>
-</p>
 
-<p>
-  <strong>Net total:</strong>
-  <%= @sale.net_total %>
-</p>
 
-<p>
-  <strong>Vat:</strong>
-  <%= @sale.vat %>
-</p>
 
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sales_path %>

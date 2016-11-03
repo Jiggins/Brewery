@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :total %>
-    <%= f.text_field :total %>
+    <%= f.label :total , :class => "col-sm-4"%>
+    <%= f.text_field :total , :class => "textFieldSales"%>
   </div>
 
   <div class="field">
-    <%= f.label :net_total %>
-    <%= f.text_field :net_total %>
+    <%= f.label :net_total , :class => "col-sm-4"%>
+    <%= f.text_field :net_total, :class => "textFieldSales" %>
   </div>
 
   <div class="field">
-    <%= f.label :vat %>
-    <%= f.text_field :vat %>
+    <%= f.label :vat , :class => "col-sm-4"%>
+    <%= f.text_field :vat , :class => "textFieldSales"%>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-center">
+    <%= f.submit "Update Sales", :class => "updateSalesBtn"%>
   </div>
 <% end %>

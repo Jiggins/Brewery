@@ -3,7 +3,8 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h1>Sales</h1>
+      <div class="titles ">
+      <h1 id="salesTitle">Sales</h1></div>
 
       <div class="row">
         <div class="col-xs-6">
@@ -60,9 +61,9 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-6">
     </div>
-    <div class="col-xs-6">
+    <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-6 table-responsive">
       <table>
         <thead>
           <tr>
@@ -85,9 +86,10 @@
               <td><%= sale.total %></td>
               <td><%= sale.net_total %></td>
               <td><%= sale.vat %></td>
+              <tr>
               <td><%= link_to 'Show', sale %></td>
               <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr>
             </tr>
           <% end %>
         </tbody>
