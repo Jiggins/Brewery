@@ -5,7 +5,8 @@
 
 
 #productTitle, #salesTitle{
-	color:#742E0D;
+	background: rgba(255,253,253,0.85);
+	// color:#742E0D;
 	font-size: 60px;
 }
 .textFieldSales{
@@ -33,4 +34,20 @@
 }
 .popUpTitles {
 	color:#742E0D;
+}
+.modal-header, .modal-title {
+	font-size: 40px;
+	color:#742E0D;
+	background:#DDDDDD;
+}
+.modal-content{
+	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
+	background: rgba(255,253,253,0.85) !important;
+}
+table{
+	border-radius: 3px !important;
+	margin-bottom: 50px !important;
+}
+thead, th{
+	text-align: center;
 }
