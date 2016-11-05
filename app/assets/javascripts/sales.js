@@ -8,6 +8,6 @@ function showDateTimePicker(date) {
   });
 
   $('#datetimepicker').on('dp.change', function(event) {
-    window.location = '/sales?=date=' + event.date.format('Y-MM-DD');
+    window.location = '/sales?date=' + event.date.format('Y-MM-DD');
   });
 }
