@@ -1,0 +1,64 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title text-center">Sale</h4>
+      <h5 class="modal-title text-center"><%= @sale.created_at.strftime '%a, %e %b at %k:%M:%S' %></h5>
+    </div>
+
+    <div class="modal-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Vat</th>
+              <th>Net total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sale.products.find_all do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= number_to_currency(product.price - product.vat, unit: '€') %></td>
+                <td><%= number_to_currency product.vat,   unit: '€' %></td>
+                <td><%= number_to_currency product.price, unit: '€' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td><strong>Total:</strong></td>
+              <td><strong><%= number_to_currency @sale.total, unit: '€' %></strong></td>
+              <td><strong><%= number_to_currency @sale.vat,   unit: '€' %></strong></td>
+              <td><strong><%= number_to_currency @sale.net_total, unit: '€' %></strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cash or Credit</th>
+              <th>Loyalty Card</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
+              <td><%= glyphicon :ok if @sale.loyalty_card %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

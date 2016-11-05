@@ -6,12 +6,16 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
   end
 
   # GET /sales/1
   # GET /sales/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
   end
 
   # GET /sales/new
@@ -68,7 +72,7 @@ class SalesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
-      @sale = Sale.find(params[:id])
+      @sale = Sale.includes(:products).find(params[:id])
     end
 
     def set_date

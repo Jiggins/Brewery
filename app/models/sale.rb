@@ -34,7 +34,7 @@ class Sale < ApplicationRecord
     # An optional parameter `time` can be given to return the sales for that
     # day/week/month/year.
     define_singleton_method(:"#{time_period}") do |time = Time.now|
-      where(created_at: time.send(:"beginning_of_#{time_period}") .. time.send(:"end_of_#{time_period}")).order(:created_at)
+      where(created_at: time.send(:"beginning_of_#{time_period}") .. time.send(:"end_of_#{time_period}"))
     end
 
     # Defines methods: group_by_day, group_by_week, group_by_month, group_by_year.
