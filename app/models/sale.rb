@@ -11,7 +11,7 @@ class Sale < ApplicationRecord
 
     @sale.products << products
     @sale.loyalty_card = loyalty_card || false
-    @sale.cash_or_credit = credit ? :credit : :cash
+    @sale.cash_or_credit = credit == 'true' ? 'credit' : 'cash'
 
     @sale.save
     return @sale
