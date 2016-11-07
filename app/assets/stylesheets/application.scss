@@ -112,7 +112,7 @@ button{
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
 }
-.LoyaltyBtn{
+.LoyaltyBtn, #resetTransaction{
 	cursor:pointer;
 	overflow:hidden;
 	line-height: 60px;
@@ -126,6 +126,10 @@ button{
 	background: #A16F4B;
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
+	margin-bottom: 10px;
+}
+.minus{
+	margin-bottom: 10px;
 }
 #totalDisplay{
 	height: 50px;
@@ -247,3 +251,4 @@ $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
 	 
 }
+
