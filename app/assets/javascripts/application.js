@@ -340,6 +340,8 @@ if (window.location.pathname == '/') {
         $('#tillTotal').html('');
         paySuccessful = false;
       });
+
   });
 }
+
 
