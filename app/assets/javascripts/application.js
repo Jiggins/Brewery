@@ -26,7 +26,7 @@ var loyalty = false;
 var countLoyalty =1;
 var paySuccessful = false;
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   // Only load if on till page.
   if (window.location.pathname == '/') {
 
@@ -145,6 +145,19 @@ $(document).ready(function() {
             $('.tab5').removeClass('greyBack');
     }); 
   }
+    //MANAGER FUNCTIONS
+      $('#prodIntentory').click(function(){
+          window.location='/products';
+      });
+      $('#prodSales').click(function(){
+          window.location='/sales';
+      });
+      $('#resetTransaction').click(function(){
+         //reset to empty till transaction
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+        paySuccessful = false;
+      });
 });
 
 // GET JSON FILE CONTENTS
@@ -327,21 +340,10 @@ if (window.location.pathname == '/') {
           }
     });
 
-  //MANAGER FUNCTIONS
-      $('#prodIntentory').click(function(){
-          window.location='/products';
-      });
-      $('#prodSales').click(function(){
-          window.location='/sales';
-      });
-      $('#resetTransaction').click(function(){
-         //reset to empty till transaction
-        $('#tillList1').html('');
-        $('#tillTotal').html('');
-        paySuccessful = false;
-      });
+
 
   });
+
 }
 
 
