@@ -1,32 +1,70 @@
-<%= form_for(sale) do |f| %>
+<%= form_for(sale, remote: true) do |f| %>
   <% if sale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
 
       <ul>
-      <% sale.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% sale.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :total , :class => "col-sm-4"%>
-    <%= f.text_field :total , :class => "textFieldSales"%>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Vat</th>
+          <th>Net total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% all_products = Product.all %>
+        <%= f.fields_for 'products' do |ff| %>
+          <% sale.products.each_with_index do |product, i| %>
+            <tr>
+              <td><%= ff.collection_select i, all_products, :id, :name, selected: product.id %></td>
+              <td><%= number_to_currency(product.price - product.vat, unit: '€') %></td>
+              <td><%= number_to_currency product.vat,   unit: '€' %></td>
+              <td><%= number_to_currency product.price, unit: '€' %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td><strong>Total:</strong></td>
+          <td><strong><%= number_to_currency sale.total, unit: '€' %></strong></td>
+          <td><strong><%= number_to_currency sale.vat,   unit: '€' %></strong></td>
+          <td><strong><%= number_to_currency sale.net_total, unit: '€' %></strong></td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
-  <div class="field">
-    <%= f.label :net_total , :class => "col-sm-4"%>
-    <%= f.text_field :net_total, :class => "textFieldSales" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :vat , :class => "col-sm-4"%>
-    <%= f.text_field :vat , :class => "textFieldSales"%>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Cash or Credit</th>
+          <th>Loyalty Card</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.select :cash_or_credit, [:cash, :credit] %></td>
+          <td><%= f.check_box :loyalty_card , :class => "textFieldSales"%></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="actions text-center">
-    <%= f.submit "Update Sales", :class => "updateSalesBtn"%>
+    <%= f.submit "Update Sales",  class: "updateSalesBtn" %>
   </div>
 <% end %>

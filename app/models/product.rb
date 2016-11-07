@@ -28,6 +28,10 @@ class Product < ApplicationRecord
      ['Retail',          "Product::Retail"]]
   end
 
+  def self.type_map
+    types.map(&:reverse).to_h
+  end
+
   def vat
     (price.to_d * (vat_rate / 100)).to_f
   end

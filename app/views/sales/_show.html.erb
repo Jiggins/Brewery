@@ -13,6 +13,7 @@
           <thead>
             <tr>
               <th>Name</th>
+              <th>Type</th>
               <th>Price</th>
               <th>Vat</th>
               <th>Net total</th>
@@ -22,6 +23,7 @@
             <% @sale.products.find_all do |product| %>
               <tr>
                 <td><%= product.name %></td>
+                <td><%= Product.type_map[product.type] %></td>
                 <td><%= number_to_currency(product.price - product.vat, unit: '€') %></td>
                 <td><%= number_to_currency product.vat,   unit: '€' %></td>
                 <td><%= number_to_currency product.price, unit: '€' %></td>
@@ -31,6 +33,7 @@
           <tfoot>
             <tr>
               <td><strong>Total:</strong></td>
+              <td></td>
               <td><strong><%= number_to_currency @sale.total, unit: '€' %></strong></td>
               <td><strong><%= number_to_currency @sale.vat,   unit: '€' %></strong></td>
               <td><strong><%= number_to_currency @sale.net_total, unit: '€' %></strong></td>

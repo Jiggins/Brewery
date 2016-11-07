@@ -70,56 +70,38 @@
 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
-        <!-- Show Modal -->
-      <div class="modal fade" id="showModal" role="dialog">
-      </div>
+      <!-- Show Modal -->
+      <div class="modal fade" id="showModal" role="dialog"></div>
 
-    <!-- Edit Modal -->
-      <div class="modal fade" id="editModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h1 class="popUpTitles text-center">Edit Sale</h1>
-          </div>
-          <div class="modal-body">
-           <p>form here</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Time <%= glyphicon 'chevron-down' %></th>
-            <th>Total</th>
-            <th>Vat</th>
-            <th>Net total</th>
-            <th>Cash or Credit</th>
-            <th>Loyalty Card</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% Sale.day(@date).order(created_at: :desc).take(10).find_all do |sale| %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td><%= sale.created_at.strftime '%k:%M:%S' %></td>
-              <td><%= sale.total %></td>
-              <td><%= sale.vat %></td>
-              <td><%= sale.net_total %></td>
-              <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
-              <td><%= glyphicon :ok if sale.loyalty_card %></td>
-              <td><%= link_to 'Show', sale_path(sale), {remote: true, 'data-toggle': 'modal', 'data-target': '#showModal'}  %></td>
-              <td><%= link_to 'Edit', "#", data: {toggle: "modal", target: "#editModal"} %></td>
-              <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Time <%= glyphicon 'chevron-down' %></th>
+              <th>Total</th>
+              <th>Vat</th>
+              <th>Net total</th>
+              <th>Cash or Credit</th>
+              <th>Loyalty Card</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% Sale.day(@date).order(created_at: :desc).take(10).find_all do |sale| %>
+              <tr>
+                <td><%= sale.created_at.strftime '%k:%M:%S' %></td>
+                <td><%= sale.total %></td>
+                <td><%= sale.vat %></td>
+                <td><%= sale.net_total %></td>
+                <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
+                <td><%= glyphicon :ok if sale.loyalty_card %></td>
+                <td><%= link_to 'Show', sale_path(sale),      { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' }  %></td>
+                <td><%= link_to 'Edit', edit_sale_path(sale), { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' } %></td>
+                <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
