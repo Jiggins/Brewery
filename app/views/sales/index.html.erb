@@ -3,107 +3,62 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <div class="titles ">
-      <h1 id="salesTitle">Sales</h1></div>
+      <div class="titles">
+        <h1 id="salesTitle">Sales</h1>
+      </div>
 
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-sm-8 col-xs-12 table-responsive">
+          <!-- Show Modal -->
+          <div class="modal fade" id="showModal" role="dialog"></div>
+
+          <div class="table-responsive" id="salesTable">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Time <%= glyphicon 'chevron-down' %></th>
+                  <th>Total</th>
+                  <th>Vat</th>
+                  <th>Net total</th>
+                  <th>Cash or Credit</th>
+                  <th>Loyalty Card</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Sale.day(@date).order(created_at: :desc).take(10).find_all do |sale| %>
+                  <tr>
+                    <td><%= sale.created_at.strftime '%k:%M:%S' %></td>
+                    <td><%= sale.total %></td>
+                    <td><%= sale.vat %></td>
+                    <td><%= sale.net_total %></td>
+                    <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
+                    <td><%= glyphicon :ok if sale.loyalty_card %></td>
+                    <td><%= link_to 'Show', sale_path(sale),      { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' }  %></td>
+                    <td><%= link_to 'Edit', edit_sale_path(sale), { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' } %></td>
+                    <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
           <div class="form-group">
-            <div id="datetimepicker"></div>
-          </div>
-        </div>
-      </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div id="datetimepicker"></div>
+              </div>
+            </div>
 
-      <div class="row">
-        <div class="col-xs-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <%# <%= line_chart day_chart %>
-              <%= line_chart Sale.day(@date).product_chart_hour.take(20) %>
-            </div>
-            <div class="panel-footer">
-              Today: <%= Date.today.strftime '%A %b %Y' %>
-            </div>
-          </div>
-        </div>
+            <%= render partial: 'graphs' %>
 
-        <div class="col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <%# <%= line_chart week_chart %>
-              <%= line_chart Sale.week(@date).product_chart_day.take(20) %>
-            </div>
-            <div class="panel-footer">
-              Week: <%= 1.week.ago.strftime '%A %b %Y' %> - <%= Date.today.strftime '%A %b %Y' %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <%# <%= line_chart month_chart %>
-              <%= line_chart Sale.month(@date).product_chart_week.take(20) %>
-            </div>
-            <div class="panel-footer">
-              Month: <%= 1.month.ago.strftime '%A %b %Y' %> - <%= Date.today.strftime '%A %b %Y' %>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-6">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <%# <%= line_chart year_chart %>
-              <%= line_chart Sale.year(@date).product_chart_week.take 20 %>
-            </div>
-            <div class="panel-footer">
-              Year: <%= 1.year.ago.strftime '%A %b %Y' %> - <%= Date.today.strftime '%A %b %Y' %>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
-      <!-- Show Modal -->
-      <div class="modal fade" id="showModal" role="dialog"></div>
-
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Time <%= glyphicon 'chevron-down' %></th>
-              <th>Total</th>
-              <th>Vat</th>
-              <th>Net total</th>
-              <th>Cash or Credit</th>
-              <th>Loyalty Card</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% Sale.day(@date).order(created_at: :desc).take(10).find_all do |sale| %>
-              <tr>
-                <td><%= sale.created_at.strftime '%k:%M:%S' %></td>
-                <td><%= sale.total %></td>
-                <td><%= sale.vat %></td>
-                <td><%= sale.net_total %></td>
-                <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
-                <td><%= glyphicon :ok if sale.loyalty_card %></td>
-                <td><%= link_to 'Show', sale_path(sale),      { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' }  %></td>
-                <td><%= link_to 'Edit', edit_sale_path(sale), { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' } %></td>
-                <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script>

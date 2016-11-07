@@ -2,6 +2,7 @@
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 @import 'products.scss';
+@import 'sales.scss';
 //@import 'https://fonts.googleapis.com/css?family=Open+Sans';
 // @import 'https://fonts.googleapis.com/css?family=Inconsolata|Oswald';
 @mixin displayingInline(){
@@ -246,4 +247,7 @@ button{
 $breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
 	 
+}
+#salesTable {
+  margin-top: -20px;
 }

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%# <%= line_chart day_chart %>
+        <%= line_chart Sale.day(@date).product_chart_hour.take(20) %>
+      </div>
+      <div class="panel-footer">
+        Today: <%= @date.strftime '%A %d %b %Y' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%# <%= line_chart week_chart %>
+        <%= line_chart Sale.week(@date).product_chart_day.take(20) %>
+      </div>
+      <div class="panel-footer">
+        Week: <%= @date.beginning_of_week.strftime '%A %d %b %Y' %> - <%= @date.strftime '%A %d %b %Y' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%# <%= line_chart month_chart %>
+        <%= line_chart Sale.month(@date).product_chart_week.take(20) %>
+      </div>
+      <div class="panel-footer">
+        Month: <%= @date.beginning_of_month.strftime '%d %b %Y' %> - <%= @date.strftime '%d %b %Y' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%# <%= line_chart year_chart %>
+        <%= line_chart Sale.year(@date).product_chart_week.take 20 %>
+      </div>
+      <div class="panel-footer">
+        Year: <%= @date.beginning_of_year.strftime '%d %b %Y' %> - <%= @date.strftime '%d %b %Y' %>
+      </div>
+    </div>
+  </div>
+</div>
