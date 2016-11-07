@@ -2,10 +2,17 @@
   <p id="notice"><%= notice %></p>
 
   <div class="row">
-    <div class="col-xs-12">
-      <div class="titles ">
-      <h1 id="salesTitle">Sales</h1></div>
+     <div class=" col-md-12 titles">
+      <div class="row">
 
+      <div class="col-md-offset-1 col-sm-offset-1 col-md-2 col-sm-2">
+      <%= link_to root_path  do %>
+        <button class="returnHome">HOME</button>
+      <% end%>
+    </div>
+      <h1 class="col-md-6" id="salesTitle">Sales</h1>
+      </div>
+    </div>
       <div class="row">
         <div class="col-xs-6">
           <div class="form-group">

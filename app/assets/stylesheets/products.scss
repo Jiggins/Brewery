@@ -5,9 +5,13 @@
 
 
 #productTitle, #salesTitle{
-	background: rgba(255,253,253,0.85);
-	// color:#742E0D;
-	font-size: 60px;
+	line-height: 30px;
+	padding-bottom: 20px;
+	font-family: Copperplate-Bold;
+	font-size: 64px;
+	color: #A1957D;
+	letter-spacing: 0px;
+	text-shadow: 2px 2px 0px rgba(0,0,0,0.50);
 }
 .textFieldSales{
 	font-family: Verdana;
@@ -24,13 +28,13 @@
 	background: #742E0D;
 }
 .titles{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background:#DDDDDD;
-	border-radius: 3px;
+	cursor:default;
+	min-height:64px;
+	padding-top: 20px;
+	background: #362A19;
+	border: 1px solid #979797;
 	margin-bottom: 20px;
-	text-align: center;
-
+	vertical-align: center;
 }
 .popUpTitles {
 	color:#742E0D;
@@ -50,4 +54,15 @@ table{
 }
 thead, th{
 	text-align: center;
+}
+.returnHome{
+	background:#945321;
+	margin-top: 15px;
+	border-radius: 3px;
+	border:none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	color:white;
 }
