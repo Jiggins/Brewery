@@ -14,6 +14,7 @@
 
           <div class="table-responsive" id="salesTable">
             <table class="table table-striped">
+
               <thead>
                 <tr>
                   <th>Time <%= glyphicon 'chevron-down' %></th>
@@ -24,13 +25,14 @@
                   <th>Loyalty Card</th>
                 </tr>
               </thead>
+
               <tbody>
                 <% Sale.day(@date).order(created_at: :desc).take(10).find_all do |sale| %>
                   <tr>
                     <td><%= sale.created_at.strftime '%k:%M:%S' %></td>
-                    <td><%= sale.total %></td>
-                    <td><%= sale.vat %></td>
-                    <td><%= sale.net_total %></td>
+                    <td><%= number_to_currency sale.total, unit: '€' %></td>
+                    <td><%= number_to_currency sale.vat,   unit: '€' %></td>
+                    <td><%= number_to_currency sale.net_total, unit: '€' %></td>
                     <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
                     <td><%= glyphicon :ok if sale.loyalty_card %></td>
                     <td><%= link_to 'Show', sale_path(sale),      { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' }  %></td>
@@ -39,6 +41,16 @@
                   </tr>
                 <% end %>
               </tbody>
+
+              <tfoot>
+                <tr>
+                  <td><strong>Total:</strong></td>
+                  <td><strong><%= number_to_currency Sale.day(@date).sum(:total), unit: '€' %></strong></td>
+                  <td><strong><%= number_to_currency Sale.day(@date).sum(:vat),   unit: '€' %></strong></td>
+                  <td><strong><%= number_to_currency Sale.day(@date).sum(:net_total), unit: '€' %></strong></td>
+                </tr>
+              </tfoot>
+
             </table>
           </div>
         </div>

@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @sale.products.find_all do |product| %>
+            <% @sale.products.order(:id).find_all do |product| %>
               <tr>
                 <td><%= product.name %></td>
                 <td><%= Product.type_map[product.type] %></td>

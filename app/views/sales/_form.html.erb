@@ -25,7 +25,7 @@
       <tbody>
         <% all_products = Product.all %>
         <%= f.fields_for 'products' do |ff| %>
-          <% sale.products.each_with_index do |product, i| %>
+          <% sale.products.order(:id).each_with_index do |product, i| %>
             <tr>
               <td><%= ff.collection_select i, all_products, :id, :name, selected: product.id %></td>
               <td><%= number_to_currency(product.price - product.vat, unit: '€') %></td>
