@@ -24,8 +24,9 @@ var products = {};
 var list = [];
 var loyalty = false;
 var countLoyalty =1;
+var paySuccessful = false;
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   // Only load if on till page.
   if (window.location.pathname == '/') {
 
@@ -144,6 +145,19 @@ $(document).ready(function() {
             $('.tab5').removeClass('greyBack');
     }); 
   }
+    //MANAGER FUNCTIONS
+      $('#prodIntentory').click(function(){
+          window.location='/products';
+      });
+      $('#prodSales').click(function(){
+          window.location='/sales';
+      });
+      $('#resetTransaction').click(function(){
+         //reset to empty till transaction
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+        paySuccessful = false;
+      });
 });
 
 // GET JSON FILE CONTENTS
@@ -172,6 +186,7 @@ function postSale(credit) {
     data: {"sale": {"ids": list, "loyalty_card": loyalty, "credit": credit}},
     dataType: "json",
     success: function(sale) {
+      paySuccessful = true;
       console.log('id: ' + sale.id);
       console.log('net_total: ' + sale.net_total);
       console.log('total: ' + sale.total);
@@ -193,6 +208,12 @@ if (window.location.pathname == '/') {
     var listTotal =0;
 
     $('div').click(function(){
+      if(paySuccessful == true){
+        //reset to empty till transaction
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+        paySuccessful = false;
+      }
 
       if($(this).hasClass('minus')){//minus function now active
 
@@ -270,6 +291,12 @@ if (window.location.pathname == '/') {
 
       //POST record of sale to server
       postSale(false);
+      if(paySuccessful == true){
+        //reset to empty till transaction
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+        paySuccessful = false;
+      }
     });
 
     $('.creditBtn').click(function(){
@@ -313,12 +340,10 @@ if (window.location.pathname == '/') {
           }
     });
 
-  //MANAGER FUNCTIONS
-      $('#prodIntentory').click(function(){
-          window.location='http://localhost:3000/products';
-      });
-      $('#prodSales').click(function(){
-          window.location='http://localhost:3000/sales';
-      });
+
+
   });
+
 }
+
+
