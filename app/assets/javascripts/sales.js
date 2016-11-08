@@ -11,3 +11,12 @@ function showDateTimePicker(date) {
     window.location = '/sales?date=' + event.date.format('Y-MM-DD');
   });
 }
+$(window).load(function() {
+
+  // MAKE CHARTS FULL SCREEN
+  $('#dayChart').add('#weekChart').add('#monthChart').add('#yearChart').click(function(){
+
+    $(this).parents('.chart').toggleClass('fullScreen');
+
+  });
+});
