@@ -29,18 +29,40 @@ function showDateTimePicker(date) {
   $("#end-date-picker").on("dp.change", function (e) {
     $('#start-date-picker').data("DateTimePicker").maxDate(e.date);
   });
+//USING THE INPUT-GROUP-ADDON BUTTONS CLICK TO CHANGE CLASS APPLIED TO THE EXPORT BUTTON
+  var dateChanged1 = false;
+  var dateChange2 = false;
 
-  $(".form-control").change(function() {
-    console.log("#start-date-picker: " + $('#start-date-picker').data("DateTimePicker").date());
-    console.log("#end-date-picker: "   + $('#end-date-picker').data("DateTimePicker").date());
-
-    if ($('#start-date-picker').value != '' && $('#end-date-picker').value != '') {
+  $('.btn1').click(function(){
+     dateChanged1 = true;
+    if(dateChanged2 ==true){
       $('#sales-export-button').removeClass('disabled');
-    }
-    else {
+    }else{
+      dateChanged1 = true;
       $('#sales-export-button').addClass('disabled');
     }
   });
+  $('.btn2').click(function(){
+    dateChanged2 = true;
+    if(dateChanged1 ==true){
+      $('#sales-export-button').removeClass('disabled');
+    }else{
+      dateChanged2 = true;
+      $('#sales-export-button').addClass('disabled');
+    }
+  });
+
+  // $(".form-control").change(function() {
+  //   console.log("#start-date-picker: " + $('#start-date-picker').data("DateTimePicker").date());
+  //   console.log("#end-date-picker: "   + $('#end-date-picker').data("DateTimePicker").date());
+
+  //   if ($('#start-date-picker').value != '' && $('#end-date-picker').value != '') {
+  //     $('#sales-export-button').removeClass('disabled');
+  //   }
+  //   else {
+  //     $('#sales-export-button').addClass('disabled');
+  //   }
+  // });
 }
 
 $(window).load(function() {
