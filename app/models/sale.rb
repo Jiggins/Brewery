@@ -1,7 +1,10 @@
+require 'csv'
+
 class Sale < ApplicationRecord
   has_and_belongs_to_many :products
   before_save :set_totals
   enum cash_or_credit: [:cash, :credit]
+  include Util
   Time.include CoreExtensions::Time
 
   def self.create_from_products(products, credit = nil, loyalty_card = nil)
@@ -87,6 +90,46 @@ class Sale < ApplicationRecord
       end
     end
     product_hash
+  end
+
+  def self.export(start_date, ending_date)
+    raise ArgumentError, 'start date cannot be nil' if start_date.nil?
+    raise ArgumentError, 'end date cannot be nil'   if ending_date.nil?
+
+    CSV.open "/tmp/sales-export-#{ending_date.strftime '%Y-%m-%d'}.csv", "wb" do |csv|
+      csv << "id, sale id, Date, Sales @9%, Sales @13.5%, Sales @23%, Sales@Other, Cost @9%, Cost @23%".split(', ')
+
+      i = 1
+      totals = [0]*4
+
+      relation = where(created_at: (start_date.beginning_of_day .. ending_date.end_of_day))
+
+      # merge_enum_by(:created_at, Sale.month, Purchase.month).each_with_index do |sale, sale_id|
+      relation.find_all.each_with_index do |sale, sale_id|
+        sale.products.each do |product|
+          i += 1
+          row = [i, sale_id, sale.created_at.to_date.strftime('%a %d-%m-%Y')]
+
+          row += case product.vat_rate
+                 when 9.0
+                   totals[0] += product.vat
+                   [product.vat.round(2), nil, nil, nil]
+                 when 13.5
+                   totals[1] += product.vat
+                   [nil, product.vat.round(2), nil, nil]
+                 when 23.0
+                   totals[2] += product.vat
+                   [nil, nil, product.vat.round(2),nil]
+                 else
+                   totals[3] += product.vat
+                   [nil, nil, nil, "#{product.name}@#{product.vat_rate}: #{product.vat.round(2)}"]
+                 end
+
+          csv << row
+        end
+      end
+      csv << ["TOTAL", nil, nil] + totals.map {|x| x.round 2 }
+    end
   end
 
   private

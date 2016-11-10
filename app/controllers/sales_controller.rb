@@ -8,6 +8,14 @@ class SalesController < ApplicationController
   def index
   end
 
+  def export
+    start_date  = Date.parse params[:start_date]
+    ending_date = Date.parse params[:end_date]
+    file = Sale.export(start_date, ending_date)
+
+    send_file file.path, filename: file.path.split('/').last, type: 'text/csv'
+  end
+
   # GET /sales/1
   # GET /sales/1.json
   def show
