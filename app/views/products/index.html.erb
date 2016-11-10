@@ -36,7 +36,7 @@
         </thead>
 
         <tbody>
-          <tr>
+          <tr  valign="bottom" style="text-align: center; vertical-align: middle;">
             <% @product = Product.new %>
             <%= render partial: 'products/form', locals: { product: Product.new } %>
             <td colspan="1"></td>
@@ -46,7 +46,7 @@
             <tr>
               <% @product = product %>
               <%= render partial: 'products/form', locals: { product: product }  %>
-              <td>
+              <td valign="bottom" style="text-align: center; vertical-align: middle;">
                 <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <%= glyphicon 'remove' %>
                 <% end %>
