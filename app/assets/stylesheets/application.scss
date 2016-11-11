@@ -20,6 +20,18 @@ body{
 	background-image: url("CoffeeBeansBackground.jpg");
 	background-size:100%;
 }
+.notice {
+  position: fixed;
+  overflow: hidden; 
+  padding: 5px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.notice-inner {
+  padding: 5px;
+  width: 100%;
+}
 .modal-content{
 	background: rgba(255,253,253,0.80);
 }
