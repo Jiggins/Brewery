@@ -29,18 +29,6 @@ function showDateTimePicker(date) {
   $("#end-date-picker").on("dp.change", function (e) {
     $('#start-date-picker').data("DateTimePicker").maxDate(e.date);
   });
-
-  $(".form-control").change(function() {
-    console.log("#start-date-picker: " + $('#start-date-picker').data("DateTimePicker").date());
-    console.log("#end-date-picker: "   + $('#end-date-picker').data("DateTimePicker").date());
-
-    if ($('#start-date-picker').value != '' && $('#end-date-picker').value != '') {
-      $('#sales-export-button').removeClass('disabled');
-    }
-    else {
-      $('#sales-export-button').addClass('disabled');
-    }
-  });
 }
 
 $(window).load(function() {

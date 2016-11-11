@@ -19,7 +19,7 @@
       <div class="form-group">
         <div class='input-group date' id='start-date-picker'>
           <%= text_field_tag :start_date, @date.strftime('1st, %b %y'), required: true, class: 'form-control' %>
-          <span class="input-group-addon">
+          <span class="input-group-addon btn1">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
         </div>
@@ -28,13 +28,13 @@
       <div class="form-group">
         <div class='input-group date' id='end-date-picker'>
           <%= text_field_tag :end_date, nil, required: true, class: 'form-control' %>
-          <span class="input-group-addon">
+          <span class="input-group-addon btn2">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
         </div>
       </div>
 
-      <%= submit_tag 'Export', remote: true, id: 'sales-export-button', class: 'btn btn-primary pull-right disabled' %>
+      <%= submit_tag 'Export', remote: true, id: 'sales-export-button', class: 'btn btn-primary pull-right' %>
     <% end %>
   </div>
 </div>
