@@ -1,5 +1,11 @@
+require 'fileutils'
+
 rails_env = ENV['RAILS_ENV'] || 'development'
 environment rails_env
+
+['pids', 'sockets'].each do |path|
+  FileUtils.mkpath "#{Dir.pwd}/tmp/#{path}"
+end
 
 pidfile "#{Dir.pwd}/tmp/pids/puma.pid"
 state_path "#{Dir.pwd}/tmp/pids/puma.pid.state"
