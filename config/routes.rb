@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :products
-  resources :sales, only: [:index, :show, :edit, :create, :update] do
+  resources :sales, only: [:index, :destroy, :show, :edit, :create, :update] do
     post 'export', on: :collection
   end
 
