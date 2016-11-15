@@ -2,9 +2,7 @@ desc "generate a systemd service to start pumactl"
 
 task generate_systemd_unit: :environment do
   unless Pathname.new('bin/pumactl').exist?
-    unless system 'bundle binstubs puma --path ./bin'
-      puts 'Please run `bundle binstubs puma --path ./bin` before running this rake task'
-    end
+    puts 'Please run `bundle binstubs puma --path ./bin` before running this rake task'
   end
 
   file_name = Rails.root.join("#{Rails.application.class.parent_name.downcase}.service")
