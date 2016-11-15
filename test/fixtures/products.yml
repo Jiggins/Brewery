@@ -8,10 +8,10 @@ one:
   price: 3.0
   vat_rate: 9.0
   visible: t
-  image_file_name: cappucino.png
-  image_content_type: image/png
-  image_file_size: 343476
-  image_updated_at: '2016-08-31 21:55:18.303353'
+  image_file_name:
+  image_content_type:
+  image_file_size:
+  image_updated_at:
   created_at: '2016-08-23 21:57:31.780465'
   updated_at: '2016-08-31 21:55:18.514513'
 two:
@@ -22,10 +22,10 @@ two:
   price: 2.5
   vat_rate: 9.0
   visible: t
-  image_file_name: cappucino.png
-  image_content_type: image/png
-  image_file_size: 343476
-  image_updated_at: '2016-08-31 21:55:18.518557'
+  image_file_name:
+  image_content_type:
+  image_file_size:
+  image_updated_at:
   created_at: '2016-08-23 21:58:42.944093'
   updated_at: '2016-08-31 21:55:18.726501'
 three:
