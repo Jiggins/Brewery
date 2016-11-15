@@ -11,125 +11,38 @@
 				</div>
 			</div><br/>
 			<!-- TABS AT TOP -->
-			<div class="row">
-				<div class="tabs tab1 greyBack col-md-2 col-sm-2">T/A Coffee</div>
-				<div class="tabs tab2 col-md-2 col-sm-2">T/A Tea</div>
-				<div class="tabs tab3 col-md-2 col-sm-2">Sit in Coffee</div>
-				<div class="tabs tab4 col-md-2 col-sm-2">Sit in Tea</div>
-				<div class="tabs tab5 col-md-2 col-sm-2">Cold Drinks</div>
-				<div class="tabs tab6 col-md-2 col-sm-2">Food & Retail</div>
+			<div class="row seven-cols">
+				<div class="tabs tab1 col-md-2 col-sm-1 greyBack" id="tab-CoffeeTakeOut">T/A Coffee</div>
+				<div class="tabs tab2 col-md-2 col-sm-1" id="tab-TeaTakeOut">T/A Tea</div>
+				<div class="tabs tab3 col-md-2 col-sm-1" id="tab-CoffeeSitIn">Sit in Coffee</div>
+				<div class="tabs tab4 col-md-2 col-sm-1" id="tab-TeaSitIn">Sit in Tea</div>
+				<div class="tabs tab5 col-md-2 col-sm-1" id="tab-ColdDrink">Cold Drinks</div>
+				<div class="tabs tab6 col-md-2 col-sm-1" id="tab-Food">Food</div>
+				<div class="tabs tab6 col-md-2 col-sm-1" id="tab-Retail">Retail</div>
 			</div>
 			<!-- CONTENTS -->
 			<div class="row productBlockBackground">
 				<div class="col-md-12 col-sm-12 col-xs-12 ">
-					<div class="row" id="TACoffee">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::CoffeeTakeOut', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div id=<%= product.id %> class="panel panel-default tillThing">
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row" id="TATea">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::TeaTakeOut', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row" id="SICoffee">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::CoffeeSitIn', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row" id="SITea">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::TeaSitIn', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row" id="ColdDrinks">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::ColdDrink', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-					<div class="row" id="FoodRetail">
-						<%# See the Product#types in #%>
-						<%# app/models/product.rb for a list of types. #%>
-						<% Product.where(type: 'Product::Retail', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-						<% Product.where(type: 'Product::Food', visible: true).each do |product| %>
-							<div class="col-sm-3">
-								<div class="panel panel-default tillThing" id=<%= product.id %>>
-									<div class="panel-body">
-										<%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
-									</div>
-									<div class="panel-footer">
-										<%= product.name %>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
+
+          <% Product.type_map.keys.each do |type| %>
+            <%= content_tag :div, class: 'row tab-content', id: type.split('::').last do %>
+              <%# See the Product#types in #%>
+              <%# app/models/product.rb for a list of types. #%>
+              <% Product.where(type: type, visible: true).each do |product| %>
+                <div class="col-sm-3">
+                  <div id=<%= product.id %> class="panel panel-default tillThing">
+                    <div class="panel-body">
+                      <%= image_tag (product.image.url :thumb), class: 'img-responsive' %>
+                    </div>
+                    <div class="panel-footer">
+                      <%= product.name %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+
 				  <!-- Modal -->
 				  <div class="modal fade" id="managerModal" role="dialog">
 				    <div class="modal-dialog">
@@ -214,5 +127,4 @@
 		</div>
 	</div>
 </div>
-
 

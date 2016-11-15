@@ -32,132 +32,38 @@ $(document).on('turbolinks:load', function() {
 
     // let all the tabs height equal the height of the second tab
     var biggestHeight = $('.tab2').height();
-    $('.tab1').css({'height':biggestHeight});
-    $('.tab3').css({'height':biggestHeight});
-    $('.tab4').css({'height':biggestHeight});
-    $('.tab5').css({'height':biggestHeight});
-    $('.tab6').css({'height':biggestHeight});
+    $('.tabs').css({'height':biggestHeight});
 
     //onload show first tab contents
-        $('#TACoffee').show();
-        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
+    $('.tab-content').hide();
+    $('#CoffeeTakeOut').show();
 
-    //change the color of clicked tabs
-    $(".tab1").click(function(){
+    // Add a click function to each tab
+    $('.tabs').each(function() {
+      $(this).click(function() {
+        $('.tabs').removeClass('greyBack');
+        $('.tab-content').hide();
+        // Use the id of `this` and remove the 'tab-' prefix
+        var tabContent = $(this).attr('id').substring(4);
+        $('#' + tabContent).show();
+        $(this).addClass('greyBack');
+      });
+    });
 
-        //show contents of selected tab
-        $('#TACoffee').show();
-        $('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
-
-        //change the color of clicked tabs
-    	if($(".tab1").hasClass('greyBack')){
-    	}else{	
-    	$(this).toggleClass('greyBack')};
-    		$('.tab2').removeClass('greyBack');
-    		$('.tab3').removeClass('greyBack');
-    		$('.tab4').removeClass('greyBack');
-    		$('.tab5').removeClass('greyBack');
-            $('.tab6').removeClass('greyBack');
-
-	});  
-	 $(".tab2").click(function(){
-
-        //show contents of selected tab
-        $('#TATea').show();
-        $('#TACoffee').add('#SICoffee').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
-
-        //change the color of clicked tabs
-    	if($(".tab2").hasClass('greyBack')){
-    	}else{	
-    	$(this).toggleClass('greyBack')};
-    	$('.tab1').removeClass('greyBack');
-    		$('.tab3').removeClass('greyBack');
-    		$('.tab4').removeClass('greyBack');
-    		$('.tab5').removeClass('greyBack');
-            $('.tab6').removeClass('greyBack');
-
-	}); 
-	$(".tab3").click(function(){
-
-        //show contents of selected tab
-        $('#SICoffee').show();
-        $('#TACoffee').add('#TATea').add('#SITea').add('#ColdDrinks').add('#FoodRetail').hide();
-
-        //change the color of clicked tabs
-    	if($(".tab3").hasClass('greyBack')){
-    	}else{	
-    	$(this).toggleClass('greyBack')};
-    		$('.tab1').removeClass('greyBack');
-    		$('.tab2').removeClass('greyBack');
-    		$('.tab4').removeClass('greyBack');
-    		$('.tab5').removeClass('greyBack');
-            $('.tab6').removeClass('greyBack');
-
-	});  
-	$(".tab4").click(function(){
-
-        //show contents of selected tab
-        $('#SITea').show();
-        $('#TACoffee').add('#TATea').add('#SICoffee').add('#ColdDrinks').add('#FoodRetail').hide();
-
-        //change the color of clicked tabs
-    	if($(".tab4").hasClass('greyBack')){
-    	}else{	
-    	$(this).toggleClass('greyBack')};
-    		$('.tab1').removeClass('greyBack');
-    		$('.tab2').removeClass('greyBack');
-    		$('.tab3').removeClass('greyBack');
-    		$('.tab5').removeClass('greyBack');
-            $('.tab6').removeClass('greyBack');
-
-	}); 
-	$(".tab5").click(function(){
-
-        //show contents of selected tab
-        $('#ColdDrinks').show();
-        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#FoodRetail').hide();
-
-        //change the color of clicked tabs
-    	if($(".tab5").hasClass('greyBack')){
-    	}else{	
-    	$(this).toggleClass('greyBack')};
-    		$('.tab1').removeClass('greyBack');
-    		$('.tab2').removeClass('greyBack');
-    		$('.tab3').removeClass('greyBack');
-    		$('.tab4').removeClass('greyBack');
-            $('.tab6').removeClass('greyBack');
-
-	}); 
-        $(".tab6").click(function(){
-
-        //show contents of selected tab
-        $('#FoodRetail').show();
-        $('#TACoffee').add('#TATea').add('#SICoffee').add('#SITea').add('#ColdDrinks').hide();
-
-        //change the color of clicked tabs
-        if($(".tab6").hasClass('greyBack')){
-        }else{  
-        $(this).toggleClass('greyBack')};
-            $('.tab1').removeClass('greyBack');
-            $('.tab2').removeClass('greyBack');
-            $('.tab3').removeClass('greyBack');
-            $('.tab4').removeClass('greyBack');
-            $('.tab5').removeClass('greyBack');
-    }); 
-  }
     //MANAGER FUNCTIONS
-      $('#prodIntentory').click(function(){
-          window.location='/products';
-      });
-      $('#prodSales').click(function(){
-          window.location='/sales';
-      });
-      $('#resetTransaction').click(function(){
-         //reset to empty till transaction
-        $('#tillList1').html('');
-        $('#tillTotal').html('');
-        paySuccessful = false;
-      });
+    $('#prodIntentory').click(function(){
+      window.location='/products';
+    });
+    $('#prodSales').click(function(){
+      window.location='/sales';
+    });
+    $('#resetTransaction').click(function(){
+      //reset to empty till transaction
+      $('#tillList1').html('');
+      $('#tillTotal').html('');
+      paySuccessful = false;
+    });
+  }
 });
 
 // GET JSON FILE CONTENTS
