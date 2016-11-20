@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909173809) do
+ActiveRecord::Schema.define(version: 20161117223638) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -52,10 +52,9 @@ ActiveRecord::Schema.define(version: 20160909173809) do
     t.decimal  "total",          precision: 4, scale: 2
     t.decimal  "net_total",      precision: 4, scale: 2
     t.decimal  "vat",            precision: 4, scale: 2
-    t.integer  "cash_or_credit",                         default: 0
-    t.boolean  "loyalty_card",                           default: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.integer  "payment_method",                         default: 0
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
 end

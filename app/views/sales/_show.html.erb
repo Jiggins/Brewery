@@ -46,14 +46,21 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Cash or Credit</th>
-              <th>Loyalty Card</th>
+              <th>Payment Method</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><%= @sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
-              <td><%= glyphicon :ok if @sale.loyalty_card %></td>
+              <td>
+                <% case @sale.payment_method %>
+                <% when 'cash' %>
+                  <%= glyphicon 'euro' %>
+                <% when 'credit' %>
+                  <%= glyphicon 'credit-card' %>
+                <% when 'loyalty_card' %>
+                  <%= glyphicon 'heart' %>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>

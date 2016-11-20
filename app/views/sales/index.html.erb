@@ -28,8 +28,7 @@
               <th>Total</th>
               <th>Vat</th>
               <th>Net total</th>
-              <th>Cash or Credit</th>
-              <th>Loyalty Card</th>
+              <th>Payment Method</th>
             </tr>
           </thead>
 
@@ -40,8 +39,16 @@
                 <td><%= number_to_currency sale.total, unit: '€' %></td>
                 <td><%= number_to_currency sale.vat,   unit: '€' %></td>
                 <td><%= number_to_currency sale.net_total, unit: '€' %></td>
-                <td><%= sale.cash_or_credit == 'cash' ? glyphicon(:euro) : glyphicon('credit-card') %></td>
-                <td><%= glyphicon :ok if sale.loyalty_card %></td>
+                <td>
+                  <% case sale.payment_method %>
+                  <% when 'cash' %>
+                    <%= glyphicon 'euro' %>
+                  <% when 'credit' %>
+                    <%= glyphicon 'credit-card' %>
+                  <% when 'loyalty_card' %>
+                    <%= glyphicon 'heart' %>
+                  <% end %>
+                </td>
                 <td><%= link_to 'Show', sale_path(sale),      { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' }  %></td>
                 <td><%= link_to 'Edit', edit_sale_path(sale), { remote: true, 'data-toggle': 'modal', 'data-target': '#showModal' } %></td>
                 <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

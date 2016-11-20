@@ -3,18 +3,17 @@ require 'csv'
 class Sale < ApplicationRecord
   has_and_belongs_to_many :products
   before_save :set_totals
-  enum cash_or_credit: [:cash, :credit]
+  enum payment_method: [:cash, :credit, :loyalty_card]
   include Util
   Time.include CoreExtensions::Time
 
-  def self.create_from_products(products, credit = nil, loyalty_card = nil)
+  def self.create_from_products(products, payment_method)
     raise ArgumentError 'Product list should not be null' if products.nil?
 
     @sale = Sale.new
 
     @sale.products << products
-    @sale.loyalty_card = loyalty_card || false
-    @sale.cash_or_credit = credit == 'true' ? 'credit' : 'cash'
+    @sale.payment_method = payment_method
 
     @sale.save
     return @sale
@@ -111,6 +110,8 @@ class Sale < ApplicationRecord
           row = [i, sale_id, sale.created_at.to_date.strftime('%a %d-%m-%Y')]
 
           row += case product.vat_rate
+                 when 0
+
                  when 9.0
                    totals[0] += product.vat
                    [product.vat.round(2), nil, nil, nil]
@@ -135,6 +136,13 @@ class Sale < ApplicationRecord
   private
 
   def set_totals
+    if payment_method == :loyalty_card
+      self.net_total = 0
+      self.vat = 0
+      self.total = 0
+      return
+    end
+
     total_gross = 0
     total_vat   = 0
 

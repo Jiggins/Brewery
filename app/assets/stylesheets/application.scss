@@ -116,6 +116,9 @@ button{
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
 }
+.cashBtn:active{
+  background: #E18C37;
+}
 .creditBtn{
 	cursor:pointer;
 	line-height: 60px;
@@ -129,6 +132,9 @@ button{
 	background: #613B1F;
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
+}
+.creditBtn:active{
+  background: #E18C37;
 }
 .LoyaltyBtn, #resetTransaction{
 	cursor:pointer;
@@ -145,6 +151,9 @@ button{
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
 	margin-bottom: 10px;
+}
+.LoyaltyBtn:active, #resetTransaction:active {
+  background: #E18C37;
 }
 .minus{
 	margin-bottom: 10px;

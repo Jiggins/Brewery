@@ -51,14 +51,12 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Cash or Credit</th>
-          <th>Loyalty Card</th>
+          <th>Payment Method</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= f.select :cash_or_credit, [:cash, :credit] %></td>
-          <td><%= f.check_box :loyalty_card , :class => "textFieldSales"%></td>
+          <td><%= f.select :payment_method, [:cash, :credit, :loyalty_card] %></td>
         </tr>
       </tbody>
     </table>

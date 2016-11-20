@@ -44,11 +44,10 @@ class SalesController < ApplicationController
   # POST /sales.json
   def create
     products = Product.find(params[:sale][:ids])
-    credit = params[:sale][:credit]
-    loyalty_card = params[:sale][:loyalty_card]
+    payment_method = params[:sale][:payment_method]
 
     respond_to do |format|
-      if @sale = Sale.create_from_products(products, credit, loyalty_card)
+      if @sale = Sale.create_from_products(products, payment_method)
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render json: @sale.to_json, status: :ok }
       else
@@ -103,7 +102,7 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:cash_or_credit, :loyalty_card, :net_total, :products, :total, :vat)
+      params.require(:sale).permit(:loyalty_card, :net_total, :payment_method, :products, :total, :vat)
     end
 end
 

@@ -83,22 +83,16 @@ function getProducts() {
 }
 
 // POST record of sale
-// credit = true -> Credit card transaction
-// credit = false -> Cash transaction
-function postSale(credit) {
+// Valid parameters:
+//    cash, credit, loyalty_card
+function postSale(payment_method) {
   $.ajax({
     type: "POST",
     url: "sales.json",
-    data: {"sale": {"ids": list, "loyalty_card": loyalty, "credit": credit}},
+    data: {"sale": {"ids": list, "payment_method": payment_method}},
     dataType: "json",
     success: function(sale) {
       paySuccessful = true;
-      console.log('id: ' + sale.id);
-      console.log('net_total: ' + sale.net_total);
-      console.log('total: ' + sale.total);
-      console.log('vat: ' + sale.vat);
-      console.log('cash_or_credit: ' + sale.cash_or_credit);
-      console.log('loyalty_card: ' + sale.loyalty_card);
     }
   });
 }
@@ -196,7 +190,7 @@ if (window.location.pathname == '/') {
       $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
       //POST record of sale to server
-      postSale(false);
+      postSale('cash');
       if(paySuccessful == true){
         //reset to empty till transaction
         $('#tillList1').html('');
@@ -210,7 +204,7 @@ if (window.location.pathname == '/') {
       $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
 
       //POST record of sale to server
-      postSale(true);
+      postSale('credit');
     });
 
   $('#5euro').click(function(){
@@ -236,20 +230,18 @@ if (window.location.pathname == '/') {
 
   // LOYALTY CARD USED TO PAY
     $('.LoyaltyBtn').click(function(){
-          countLoyalty ++;
-          if(countLoyalty % 2 ==0){
-              loyalty = true;
-              $('.LoyaltyBtn').css({"background":"#E18C37"});
-          }else {
-              $('.LoyaltyBtn').css({"background":"#A16F4B"});
-              loyalty = false;
-          }
+      postSale('loyalty_card');
+      $('#tillTotal').html("Loyalty Card!");
+
+      //POST record of sale to server
+      if(paySuccessful == true){
+        //reset to empty till transaction
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+        paySuccessful = false;
+      }
     });
-
-
-
   });
-
 }
 
 
