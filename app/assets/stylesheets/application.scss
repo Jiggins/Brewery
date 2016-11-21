@@ -102,7 +102,7 @@ button{
 	border-radius: 2px;
 
 }
-.cashBtn{
+#cashBtn{
 	cursor:pointer;
 	line-height: 60px;
 	text-align: center;
@@ -116,7 +116,7 @@ button{
 	box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.50);
 	border-radius: 3px;
 }
-.cashBtn:active{
+#cashBtn:active{
   background: #E18C37;
 }
 .creditBtn{

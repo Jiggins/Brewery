@@ -24,7 +24,6 @@ var products = {};
 var list = [];
 var loyalty = false;
 var countLoyalty =1;
-var paySuccessful = false;
 
 $(document).on('turbolinks:load', function() {
   // Only load if on till page.
@@ -61,7 +60,6 @@ $(document).on('turbolinks:load', function() {
       //reset to empty till transaction
       $('#tillList1').html('');
       $('#tillTotal').html('');
-      paySuccessful = false;
     });
   }
 });
@@ -92,156 +90,147 @@ function postSale(payment_method) {
     data: {"sale": {"ids": list, "payment_method": payment_method}},
     dataType: "json",
     success: function(sale) {
-      paySuccessful = true;
+      $('html').one('click', function() {
+        alert('holy shit click');
+        // Clear list on next click
+        $('#tillList1').html('');
+        $('#tillTotal').html('');
+      });
     }
   });
 }
 
-if (window.location.pathname == '/') {
-  $.when(getProducts()).done(function() {
-    //FUNCTION TO ADD & SUBTRACT ALL ITEMS IN THE TILL LIST 
+$.when(getProducts()).done(function() {
+  //FUNCTION TO ADD & SUBTRACT ALL ITEMS IN THE TILL LIST 
 
-    var adding =0;
-    var till =0;
-    var count =1;
-    var screenTotal =0;
-    var listTotal =0;
+  var adding =0;
+  var till =0;
+  var count =1;
+  var screenTotal =0;
+  var listTotal =0;
+  var i = 0;
 
-    $('div').click(function(){
-      if(paySuccessful == true){
-        //reset to empty till transaction
-        $('#tillList1').html('');
-        $('#tillTotal').html('');
-        paySuccessful = false;
-      }
+  $('div').click(function(){
+    console.log("till: " + till + "\t" + i++);
 
-      if($(this).hasClass('minus')){//minus function now active
+    if($(this).hasClass('minus')){//minus function now active
 
-        till = Number($('#tillTotal').text()); //get value of till total
-        count++;
+      till = Number($('#tillTotal').text()); //get value of till total
+      count++;
 
-        $('div').click(function(){
-          if(count % 2 == 0){
+      $('div').click(function(){
+        if(count % 2 === 0){
 
-            if($(this).hasClass('tillThing')){
+          if($(this).hasClass('tillThing')){
 
-              //subtract item value from total
-              var productID = $(this).attr('id');
-              var sub = products[productID].price;
-              var prodname = products[productID].name;
-              list.push(productID);
+            //subtract item value from total
+            var productID = $(this).attr('id');
+            var sub = products[productID].price;
+            var prodname = products[productID].name;
+            list.push(productID);
 
 
-              till = Number($('#tillTotal').text());
-              till -= sub;
+            till = Number($('#tillTotal').text());
+            till -= sub;
 
-              if(till<0){
-                $('#tillTotal').html("0.00");
-              }
-              else{
-                $('#tillTotal').html(till);
-              }
-
-              count++;
-
-              //mark item as removed from list
-              $('#tillList1').append("- " + prodname + '<span class="righPrice">€' + sub +'</span><br/>');
-
+            if(till<0){
+              $('#tillTotal').html("0.00");
             }
+            else{
+              $('#tillTotal').html(till);
+            }
+
+            count++;
+
+            //mark item as removed from list
+            $('#tillList1').append("- " + prodname + '<span class="righPrice">€' + sub +'</span><br/>');
+
           }
+        }
 
-        });
-      }
+      });
+    }
 
-      else if($(this).hasClass('tillThing') && (count % 2 != 0)){ //add function
+    else if($(this).hasClass('tillThing') && (count % 2 !== 0)){ //add function
 
-        //fist add the item to the list
-        var productID = $(this).attr('id');
-        var price = products[productID].price;
-        var name = products[productID].name;
-        $('#tillList1').append( name + '<span class="righPrice">€' + price +'</span><br/>'); //change the html for this to display
-        list.push(productID);
-        //alert(list);
+      //fist add the item to the list
+      var productID = $(this).attr('id');
+      var price = products[productID].price;
+      var name = products[productID].name;
+      $('#tillList1').append( name + '<span class="righPrice">€' + price +'</span><br/>'); //change the html for this to display
+      list.push(productID);
+      //alert(list);
 
-        //then add together the totals
-        var add =  products[productID].price;
-        till = Number($('#tillTotal').text()); 
-        till += add;
-        $('#tillTotal').html(till);
-      }
-    });
-    //ENTER CASH TO TILL SCREEN
-    $('div').click(function(){
-      if($(this).hasClass('num')){
-        $('#tillScreen').append($(this).text());
-      }
-    });
-    $('#cBtn').click(function(){
-          screenTotal = $('#tillScreen').text();
-          var out = screenTotal.substring(0,screenTotal.length-1);
-          $('#tillScreen').html(out);
-    });
+      //then add together the totals
+      var add =  products[productID].price;
+      till = Number($('#tillTotal').text()); 
+      till += add;
+      $('#tillTotal').html(till);
+    }
+  });
 
-    //CALCULATE THE CHANGE TO BE GIVEN TO CUSTOMER
-    $('.cashBtn').click(function(){
-      screenTotal = Number($('#tillScreen').text());
-      listTotal = Number($('#tillTotal').text());
-      listTotal = screenTotal - listTotal;
-      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+  //ENTER CASH TO TILL SCREEN
+  $('.num').click(function(){
+    $('#tillScreen').append($(this).text());
+  });
 
-      //POST record of sale to server
-      postSale('cash');
-      if(paySuccessful == true){
-        //reset to empty till transaction
-        $('#tillList1').html('');
-        $('#tillTotal').html('');
-        paySuccessful = false;
-      }
-    });
+  $('#cBtn').click(function(){
+    screenTotal = $('#tillScreen').text();
+    var out = '';
+    $('#tillScreen').html(out);
+  });
 
-    $('.creditBtn').click(function(){
-      listTotal = Number($('#tillTotal').text());
-      $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
+  //CALCULATE THE CHANGE TO BE GIVEN TO CUSTOMER
+  $('#cashBtn').click(function(){
+    screenTotal = Number($('#tillScreen').text());
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
-      //POST record of sale to server
-      postSale('credit');
-    });
+    //POST record of sale to server
+    postSale('cash');
+  });
+
+  $('#credit-button').click(function(){
+    listTotal = Number($('#tillTotal').text());
+    $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
+
+    //POST record of sale to server
+    postSale('credit');
+  });
 
   $('#5euro').click(function(){
-      screenTotal = 5.00;
-      listTotal = Number($('#tillTotal').text());
-      listTotal = screenTotal - listTotal;
-      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
-    });
+    screenTotal = 5.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
-    $('#10euro').click(function(){
-      screenTotal = 10.00;
-      listTotal = Number($('#tillTotal').text());
-      listTotal = screenTotal - listTotal;
-      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
-    });
+    postSale('cash');
+  });
 
-    $('#20euro').click(function(){
-      screenTotal = 20.00;
-      listTotal = Number($('#tillTotal').text());
-      listTotal = screenTotal - listTotal;
-      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
-    });
+  $('#10euro').click(function(){
+    screenTotal = 10.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+
+    postSale('cash');
+  });
+
+  $('#20euro').click(function(){
+    screenTotal = 20.00;
+    listTotal = Number($('#tillTotal').text());
+    listTotal = screenTotal - listTotal;
+    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+
+    postSale('cash');
+  });
 
   // LOYALTY CARD USED TO PAY
-    $('.LoyaltyBtn').click(function(){
-      postSale('loyalty_card');
-      $('#tillTotal').html("Loyalty Card!");
+  $('.LoyaltyBtn').click(function(){
+    //POST record of sale to server
+    $('#tillTotal').html("Loyalty Card!");
 
-      //POST record of sale to server
-      if(paySuccessful == true){
-        //reset to empty till transaction
-        $('#tillList1').html('');
-        $('#tillTotal').html('');
-        paySuccessful = false;
-      }
-    });
+    postSale('loyalty_card');
   });
-}
-
-
+});
