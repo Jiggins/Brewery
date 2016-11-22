@@ -18,6 +18,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require util
 //= require_tree .
 
 var products = {};
@@ -91,7 +92,6 @@ function postSale(payment_method) {
     dataType: "json",
     success: function(sale) {
       $('html').one('click', function() {
-        alert('holy shit click');
         // Clear list on next click
         $('#tillList1').html('');
         $('#tillTotal').html('');
@@ -110,56 +110,41 @@ $.when(getProducts()).done(function() {
   var listTotal =0;
   var i = 0;
 
-  $('div').click(function(){
-    console.log("till: " + till + "\t" + i++);
+  $('#minus').click(function() {
+    till = Number($('#tillTotal').text()); //get value of till total
+    count++;
+  });
 
-    if($(this).hasClass('minus')){//minus function now active
+  $('.tillThing').click(function(){
+    var productID = $(this).attr('id');
+    var price = products[productID].price;
+    var name = products[productID].name;
 
-      till = Number($('#tillTotal').text()); //get value of till total
-      count++;
+    if(count % 2 === 0){
+      //subtract item value from total
+      if ($.inArray(productID, list) !== -1) {
+        list.splice($.inArray(productID, list), 1);
 
-      $('div').click(function(){
-        if(count % 2 === 0){
+        till = Number($('#tillTotal').text());
+        till -= price;
 
-          if($(this).hasClass('tillThing')){
-
-            //subtract item value from total
-            var productID = $(this).attr('id');
-            var sub = products[productID].price;
-            var prodname = products[productID].name;
-            list.push(productID);
-
-
-            till = Number($('#tillTotal').text());
-            till -= sub;
-
-            if(till<0){
-              $('#tillTotal').html("0.00");
-            }
-            else{
-              $('#tillTotal').html(till);
-            }
-
-            count++;
-
-            //mark item as removed from list
-            $('#tillList1').append("- " + prodname + '<span class="righPrice">€' + sub +'</span><br/>');
-
-          }
+        if(till<0){
+          $('#tillTotal').html("0.00");
+        }
+        else{
+          $('#tillTotal').html(till);
         }
 
-      });
+        //mark item as removed from list
+        $('#tillList1').append("- " + name + '<span class="righPrice">€' + price +'</span><br/>');
+      }
+
+      count++;
     }
-
-    else if($(this).hasClass('tillThing') && (count % 2 !== 0)){ //add function
-
+    else {
       //fist add the item to the list
-      var productID = $(this).attr('id');
-      var price = products[productID].price;
-      var name = products[productID].name;
       $('#tillList1').append( name + '<span class="righPrice">€' + price +'</span><br/>'); //change the html for this to display
       list.push(productID);
-      //alert(list);
 
       //then add together the totals
       var add =  products[productID].price;
