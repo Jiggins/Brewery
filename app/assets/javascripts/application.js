@@ -168,9 +168,15 @@ $.when(getProducts()).done(function() {
   $('#cashBtn').click(function(){
     screenTotal = Number($('#tillScreen').text());
     listTotal = Number($('#tillTotal').text());
-    listTotal = screenTotal - listTotal;
-    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+    difference = screenTotal - listTotal;
 
+    if (screenTotal === 0) {
+      $('#tillTotal').html("SALE: " + listTotal.toFixed((2)));
+    }
+    else {
+      $('#tillTotal').html("CHANGE: " + difference.toFixed(2));
+    }
+    //
     //POST record of sale to server
     postSale('cash');
   });
