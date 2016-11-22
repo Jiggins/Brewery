@@ -18,7 +18,6 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require turbolinks
-//= require util
 //= require_tree .
 
 var products = {};
