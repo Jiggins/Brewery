@@ -11,7 +11,7 @@ module ApplicationHelper
       raise ArgumentError.new 'Expected one of: [:success, :info, :warning or :danger]'
     end
 
-    html_options[:class] = "alert alert-#{alert_level} alert-dismissible fade in " + html_options[:class].to_s
+    html_options[:class] = "alert alert-#{alert_level} alert-dismissible fade in row " + html_options[:class].to_s
     html_options[:role] = 'alert'
 
     content_tag :div, html_options do
@@ -31,5 +31,20 @@ module ApplicationHelper
         raise ArgumentError.new 'No text or block given'
       end
     end
+  end
+
+  def row(content = nil, options = {}, &block)
+    options[:class] = 'row' + ' ' + options[:class].to_s
+
+    content_tag :div, content, options, &block
+  end
+
+  def col(content = nil, xs: nil, sm: nil, md: nil, lg: nil, options: {}, &block)
+    options[:class] = options[:class].to_s + " col-xs-#{xs}" unless xs.nil?
+    options[:class] = options[:class].to_s + " col-sm-#{sm}" unless sm.nil?
+    options[:class] = options[:class].to_s + " col-md-#{md}" unless md.nil?
+    options[:class] = options[:class].to_s + " col-lg-#{lg}" unless lg.nil?
+
+    content_tag :div, content, options, &block
   end
 end

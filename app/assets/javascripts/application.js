@@ -73,9 +73,11 @@ function getProducts() {
     success: function(data) {
       products = data;
     },
-    failure: function(data) {
-      console.log('failure');
-      products = data;
+    error: function(jqXHR, textStatus, errorThrown) {
+      $('#notice').show();
+      $('#error-list').append('<li>Unable to get product list</li>');
+      $('#error-list').append('<li>Server responded with error code: ' + jqXHR.status + ": " + jqXHR.statusText + '</li>');
+      $('#error-list').append('<li>' + jqXHR.responseText  + '</li>');
     }
   });
 }
@@ -95,6 +97,12 @@ function postSale(payment_method) {
         $('#tillList1').html('');
         $('#tillTotal').html('');
       });
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      $('#notice').show();
+      $('#error-list').append('<li>Could not record sale</li>');
+      $('#error-list').append('<li>Server responded with error code: ' + jqXHR.status + ": " + jqXHR.statusText + '</li>');
+      $('#error-list').append('<li>' + jqXHR.responseText  + '</li>');
     }
   });
 }
