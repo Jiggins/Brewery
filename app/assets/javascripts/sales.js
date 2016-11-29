@@ -1,7 +1,7 @@
 // function to pass the @date variable to js so I don't have to fuck abut with
 // controllers.
 function showDateTimePicker(date) {
-  $('#datetimepicker').datetimepicker({
+  $('#date').datetimepicker({
     format: 'Y-MM-DD',
     defaultDate: date,
     inline: true,
@@ -16,10 +16,6 @@ function showDateTimePicker(date) {
     defaultDate: date,
     format: 'Do, MMM Y',
     useCurrent: false
-  });
-
-  $('#datetimepicker').on('dp.change', function(event) {
-    window.location = '/sales?date=' + event.date.format('Y-MM-DD');
   });
 
   $("#start-date-picker").on("dp.change", function (e) {

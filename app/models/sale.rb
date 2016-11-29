@@ -133,6 +133,32 @@ class Sale < ApplicationRecord
     end
   end
 
+  def self.z_read(start_date, ending_date)
+    raise ArgumentError, 'start date cannot be nil' if start_date.nil?
+    raise ArgumentError, 'end date cannot be nil'   if ending_date.nil?
+
+    i = 1
+    totals = [0]*3
+
+    relation = where(created_at: (start_date.beginning_of_day .. ending_date.end_of_day))
+
+    CSV.open "/tmp/z-read-#{ending_date.strftime '%Y-%m-%d'}.csv", "wb" do |csv|
+      csv << "date, time, gross, vat, net, payment method".split(', ')
+
+      relation.find_all.each do |sale|
+        totals[0] += sale.total
+        totals[1] += sale.vat
+        totals[2] += sale.net_total
+
+        puts totals[0]
+
+        csv << [sale.created_at, sale.created_at, sale.total, sale.vat, sale.net_total, sale.payment_method]
+      end
+
+      csv << ["TOTAL", nil] + totals.map {|x| x.round 2 }
+    end
+  end
+
   private
 
   def set_totals

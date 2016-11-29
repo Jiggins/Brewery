@@ -9,9 +9,26 @@ class SalesController < ApplicationController
   end
 
   def export
+    date        = Date.parse params[:date]       if params[:date]
+    start_date  = Date.parse params[:start_date] if params[:start_date]
+    ending_date = Date.parse params[:end_date]   if params[:end_date]
+
+    case params[:commit]
+    when "Set Date"
+      redirect_to sales_path(date: params[:date])
+    when "z-read"
+      file = Sale.z_read(date)
+      send_file file.path, filename: file.path.split('/').last, type: 'text/csv'
+    when "Export"
+      file = Sale.export(start_date, ending_date)
+      send_file file.path, filename: file.path.split('/').last, type: 'text/csv'
+    end
+  end
+
+  def z_read
     start_date  = Date.parse params[:start_date]
     ending_date = Date.parse params[:end_date]
-    file = Sale.export(start_date, ending_date)
+    file = Sale.z_read(start_date, ending_date)
 
     send_file file.path, filename: file.path.split('/').last, type: 'text/csv'
   end
