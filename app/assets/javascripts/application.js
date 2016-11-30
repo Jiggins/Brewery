@@ -24,6 +24,7 @@ var products = {};
 var list = [];
 var loyalty = false;
 var countLoyalty =1;
+var tabsArray = ["tab-CoffeeTakeOut","tab-TeaTakeOut","tab-CoffeeSitIn","tab-TeaSitIn","tab-ColdDrink","tab-Food","tab-Retail"];
 
 $(document).on('turbolinks:load', function() {
   // Only load if on till page.
@@ -81,6 +82,60 @@ function getProducts() {
     }
   });
 }
+
+//Swipe to next tab functionality (works for swiping on tabs only right now)
+var prevX = -1;
+ function myFunction(event) {
+   //console.log($( "div" ).find(".greyBack").attr("id"));
+
+ var tabPosition = event.target.id;
+ // console.log(event.clientY)
+
+  if(prevX == -1) {
+        prevX = event.pageX;    
+        return false;
+    }
+  if( event.pageX !=0 && prevX > event.pageX && prevX !=0) { // dragged LEFT
+
+     for(var i =0; i<tabsArray.length; i++){
+          $('.tabs').removeClass('greyBack');
+          $('.tab-content').hide();
+
+          if(tabPosition == tabsArray[tabsArray.length-1]){
+            var tabContent = tabPosition.substring(4);
+            $('#' + tabContent).show();
+        }
+
+        else if(tabPosition == tabsArray[i]){
+          // console.log("left");
+          tabPosition = tabsArray[i+1];
+          var tabContent = tabPosition.substring(4);
+          $('#' + tabContent).show();
+          $('#tab-' + tabContent).addClass('greyBack');
+          break;
+        }
+      }
+    }
+    else if(prevX < event.pageX && event.pageX !=0 && prevX !=0) { // dragged RIGHT
+       for(var i =0; i<tabsArray.length; i++){
+          $('.tabs').removeClass('greyBack');
+          $('.tab-content').hide();
+
+          if(tabPosition == tabsArray[0]){
+            var tabContent = tabPosition.substring(4);
+            $('#' + tabContent).show();
+        }
+        else if(tabPosition == tabsArray[i]){
+          // console.log("right");
+          tabPosition = tabsArray[i-1];
+          var tabContent = tabPosition.substring(4);
+          $('#' + tabContent).show();
+          $('#tab-' + tabContent).addClass('greyBack');
+          break;
+        }
+      } 
+    }
+  }
 
 // POST record of sale
 // Valid parameters:
@@ -246,3 +301,6 @@ $.when(getProducts()).done(function() {
     }
   });
 });
+
+
+
