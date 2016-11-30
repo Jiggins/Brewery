@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
     $('.tab-content').hide();
     $('#CoffeeTakeOut').show();
 
-    // Add a click function to each tab
+    // Add a Click function to each tab
     $('.tabs').each(function() {
       $(this).click(function() {
         $('.tabs').removeClass('greyBack');
@@ -118,8 +118,10 @@ $.when(getProducts()).done(function() {
   var i = 0;
 
   $('#minus').click(function() {
-    till = Number($('#tillTotal').text()); //get value of till total
-    count++;
+    if (list.length !== 0) {
+      till = Number($('#tillTotal').text()); //get value of till total
+      count++;
+    }
   });
 
   $('.tillThing').click(function(){
@@ -174,61 +176,73 @@ $.when(getProducts()).done(function() {
 
   //CALCULATE THE CHANGE TO BE GIVEN TO CUSTOMER
   $('#cashBtn').click(function(){
-    screenTotal = Number($('#tillScreen').text());
-    listTotal = Number($('#tillTotal').text());
-    difference = screenTotal - listTotal;
+    if (list.length !== 0) {
+      screenTotal = Number($('#tillScreen').text());
+      listTotal = Number($('#tillTotal').text());
+      difference = screenTotal - listTotal;
 
-    if (screenTotal === 0) {
-      $('#tillTotal').html("SALE: " + listTotal.toFixed((2)));
+      if (screenTotal === 0) {
+        $('#tillTotal').html("SALE: " + listTotal.toFixed((2)));
+      }
+      else {
+        $('#tillTotal').html("CHANGE: " + difference.toFixed(2));
+      }
+      //
+      //POST record of sale to server
+      postSale('cash');
     }
-    else {
-      $('#tillTotal').html("CHANGE: " + difference.toFixed(2));
-    }
-    //
-    //POST record of sale to server
-    postSale('cash');
   });
 
   $('#credit-button').click(function(){
-    listTotal = Number($('#tillTotal').text());
-    $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
+    if (list.length !== 0) {
+      listTotal = Number($('#tillTotal').text());
+      $('#tillTotal').html("Credit: " + listTotal.toFixed(2));
 
-    //POST record of sale to server
-    postSale('credit');
+      //POST record of sale to server
+      postSale('credit');
+    }
   });
 
   $('#5euro').click(function(){
-    screenTotal = 5.00;
-    listTotal = Number($('#tillTotal').text());
-    listTotal = screenTotal - listTotal;
-    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+    if (list.length !== 0) {
+      screenTotal = 5.00;
+      listTotal = Number($('#tillTotal').text());
+      listTotal = screenTotal - listTotal;
+      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
-    postSale('cash');
+      postSale('cash');
+    }
   });
 
   $('#10euro').click(function(){
-    screenTotal = 10.00;
-    listTotal = Number($('#tillTotal').text());
-    listTotal = screenTotal - listTotal;
-    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+    if (list.length !== 0) {
+      screenTotal = 10.00;
+      listTotal = Number($('#tillTotal').text());
+      listTotal = screenTotal - listTotal;
+      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
-    postSale('cash');
+      postSale('cash');
+    }
   });
 
   $('#20euro').click(function(){
-    screenTotal = 20.00;
-    listTotal = Number($('#tillTotal').text());
-    listTotal = screenTotal - listTotal;
-    $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
+    if (list.length !== 0) {
+      screenTotal = 20.00;
+      listTotal = Number($('#tillTotal').text());
+      listTotal = screenTotal - listTotal;
+      $('#tillTotal').html("CHANGE: " + listTotal.toFixed(2));
 
-    postSale('cash');
+      postSale('cash');
+    }
   });
 
   // LOYALTY CARD USED TO PAY
-  $('.LoyaltyBtn').click(function(){
-    //POST record of sale to server
-    $('#tillTotal').html("Loyalty Card!");
+  $('#loyalty-button').click(function(){
+    if (list.length !== 0) {
+      //POST record of sale to server
+      $('#tillTotal').html("Loyalty Card!");
 
-    postSale('loyalty_card');
+      postSale('loyalty_card');
+    }
   });
 });
