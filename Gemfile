@@ -35,6 +35,7 @@ gem 'bootstrap_form'
 
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '>= 4'
+
 # FriendlyId is the “Swiss Army bulldozer” of slugging and permalink plugins
 # for ActiveRecord. It allows you to create pretty URL’s and work with
 # human-friendly strings as if they were numeric ids for ActiveRecord models.
@@ -50,6 +51,9 @@ gem 'humanize'
 
 # Create beautiful JavaScript charts with one line of Ruby http://chartkick.com
 gem "chartkick"
+
+# Google Oauth
+gem "omniauth-google-oauth2"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
