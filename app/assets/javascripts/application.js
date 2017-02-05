@@ -22,7 +22,6 @@
 
 var products = {};
 var list = [];
-var loyalty = false;
 var countLoyalty =1;
 var tabsArray = ["tab-CoffeeTakeOut","tab-TeaTakeOut","tab-CoffeeSitIn","tab-TeaSitIn","tab-ColdDrink","tab-Food","tab-Retail"];
 
