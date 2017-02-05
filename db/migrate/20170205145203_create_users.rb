@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
-      t.string :employee_name
+      t.string :name
       t.string :provider
       t.string :uid
       t.string :oauth_token
