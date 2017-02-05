@@ -20,6 +20,9 @@ Gemfile.lock
 !/log/.keep
 !/tmp/.keep
 
+# Ignore environment variables
+.env
+
 # Ignore Byebug command history file.
 .byebug_history
 
