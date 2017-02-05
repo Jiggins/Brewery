@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :auth_account
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def auth_account
+    @auth_account ||= Account.find(session[:user_id]) if session[:user_id]
   end
 end

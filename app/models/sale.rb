@@ -2,6 +2,7 @@ require 'csv'
 
 class Sale < ApplicationRecord
   has_and_belongs_to_many :products
+  belongs_to :users
   before_save :set_totals
   enum payment_method: [:cash, :credit, :loyalty_card]
   include Util
