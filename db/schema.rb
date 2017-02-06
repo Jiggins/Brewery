@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20170205182504) do
 
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false

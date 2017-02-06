@@ -1,0 +1,32 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login-background {
+  background-image: url("Brewback.png");
+  background-size: cover;
+  width:100%;
+  height: 100vh;
+}
+
+#contentRow  {
+  margin-top: 20%;
+  border-radius: 600px;
+}
+
+#googleBtn{
+  width:200px;
+  min-height:60px;
+  border-radius: 5px;
+  border:none;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  outline:none;
+  background-color: #1D3491;
+  color:white;
+  font-size: 20px;
+  margin-top: 80%;
+  font-family: 'Indie Flower', cursive;
+}

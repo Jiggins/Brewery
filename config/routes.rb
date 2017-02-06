@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'till#index'
+  root 'login#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+  get 'login', to: 'login#index'
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :delete]
+
+  get 'till', to: 'till#index'
 
   resources :products
   resources :sales, only: [:index, :destroy, :show, :edit, :create, :update] do

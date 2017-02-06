@@ -27,7 +27,7 @@ var tabsArray = ["tab-CoffeeTakeOut","tab-TeaTakeOut","tab-CoffeeSitIn","tab-Tea
 
 $(document).on('turbolinks:load', function() {
   // Only load if on till page.
-  if (window.location.pathname == '/') {
+  if (window.location.pathname == '/till') {
 
     // let all the tabs height equal the height of the second tab
     var biggestHeight = $('.tab2').height();
