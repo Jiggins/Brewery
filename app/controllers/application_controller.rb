@@ -7,11 +7,17 @@ class ApplicationController < ActionController::Base
     @auth_account ||= Account.find(session[:auth_id]) if session[:auth_id]
   end
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
   private
 
   def force_login
-    unless auth_account
+    if ! auth_account
       redirect_to login_url
+    elsif ! current_user
+      redirect_to users_path
     end
   end
 end
