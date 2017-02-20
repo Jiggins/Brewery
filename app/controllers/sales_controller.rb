@@ -64,7 +64,7 @@ class SalesController < ApplicationController
     payment_method = params[:sale][:payment_method]
 
     respond_to do |format|
-      if @sale = Sale.create_from_products(products, payment_method)
+      if @sale = Sale.create_from_products(products, payment_method, current_user)
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render json: @sale.to_json, status: :ok }
       else
@@ -119,7 +119,7 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:loyalty_card, :net_total, :payment_method, :products, :total, :vat)
+      params.require(:sale).permit(:loyalty_card, :net_total, :payment_method, :products, :total, :user_id, :vat)
     end
 end
 

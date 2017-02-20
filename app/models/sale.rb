@@ -8,12 +8,14 @@ class Sale < ApplicationRecord
   include Util
   Time.include CoreExtensions::Time
 
-  def self.create_from_products(products, payment_method)
-    raise ArgumentError 'Product list should not be null' if products.nil?
+  def self.create_from_products(products, payment_method, user)
+    raise ArgumentError, 'Product list should not be null' if products.nil?
+    raise ArgumentError, 'User can not be null' if user.nil?
 
     @sale = Sale.new
 
     @sale.products << products
+    @sale.user_id = user.id
     @sale.payment_method = payment_method
 
     @sale.save
