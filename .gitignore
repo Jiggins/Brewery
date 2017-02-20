@@ -31,6 +31,10 @@ public/assets/
 
 # Paperclip files
 public/system/product/
+public/system/users/
+
+# Track the originals
+!public/system/users/original
 
 # System files
 .DS_Store
