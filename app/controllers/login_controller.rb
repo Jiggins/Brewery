@@ -12,4 +12,9 @@ class LoginController < ApplicationController
       redirect_to login_path 
     end
   end
+
+  def switch_user
+    session[:user_id] = User.find(params[:user_id]).id
+    redirect_to till_path
+  end
 end

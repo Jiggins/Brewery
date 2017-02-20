@@ -1,36 +1,43 @@
 
 <div class="container-fluid">
-	
-	<div class="row"><br/>
-		<!-- THE MENU PANEL-->
-		<div class="col-md-9 col-sm-12 col-xs-12">
 
-			<div id="notice">
-				<%= alert :danger do %>
-					<ul id="error-list" class="list-unstyled" style="display: inline-block"></ul>
-				<% end %>
-			</div>
+  <div class="row"><br/>
+    <!-- THE MENU PANEL-->
+    <div class="col-md-9 col-sm-12 col-xs-12">
 
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12 BreweryBanner">
-					<p id="shopTitle1">The</p>
-					<p id="shopTitle2">Brewery</p>
-				</div>
-			</div><br/>
-			<!-- TABS AT TOP -->
-			<div class="row seven-cols">
-				<div class="tabs tab1 col-md-2 col-sm-1 greyBack" id="tab-CoffeeTakeOut" draggable="true" ondrag="myFunction(event)">T/A Coffee</div>
-				<div class="tabs tab2 col-md-2 col-sm-1" id="tab-TeaTakeOut" draggable="true" ondrag="myFunction(event)">T/A Tea</div>
-				<div class="tabs tab3 col-md-2 col-sm-1" id="tab-CoffeeSitIn" draggable="true" ondrag="myFunction(event)">Sit in Coffee</div>
-				<div class="tabs tab4 col-md-2 col-sm-1" id="tab-TeaSitIn" draggable="true" ondrag="myFunction(event)">Sit in Tea</div>
-				<div class="tabs tab5 col-md-2 col-sm-1" id="tab-ColdDrink" draggable="true" ondrag="myFunction(event)">Cold Drinks</div>
-				<div class="tabs tab6 col-md-2 col-sm-1" id="tab-Food" draggable="true" ondrag="myFunction(event)">Food</div>
-				<div class="tabs tab6 col-md-2 col-sm-1" id="tab-Retail" draggable="true" ondrag="myFunction(event)">Retail</div>
-			</div>
+      <div id="notice">
+        <%= alert :danger do %>
+          <ul id="error-list" class="list-unstyled" style="display: inline-block"></ul>
+        <% end %>
+      </div>
 
-			<!-- CONTENTS -->
-			<div class="row productBlockBackground" id="product-background">
-				<div class="col-md-12 col-sm-12 col-xs-12 ">
+      <div class="row BreweryBanner">
+        <div class="col-md-10 col-sm-10 col-xs-10">
+          <p id="shopTitle1">The</p>
+          <p id="shopTitle2">Brewery</p>
+        </div>
+
+        <div class="col-xs-2">
+          <%= link_to users_path do %>
+            <%= image_tag (@current_user.image.url :tiny), class: 'img-responsive' %>
+          <% end %>
+        </div>
+      </div><br/>
+
+      <!-- TABS AT TOP -->
+      <div class="row seven-cols">
+        <div class="tabs tab1 col-md-2 col-sm-1 greyBack" id="tab-CoffeeTakeOut" draggable="true" ondrag="myFunction(event)">T/A Coffee</div>
+        <div class="tabs tab2 col-md-2 col-sm-1" id="tab-TeaTakeOut" draggable="true" ondrag="myFunction(event)">T/A Tea</div>
+        <div class="tabs tab3 col-md-2 col-sm-1" id="tab-CoffeeSitIn" draggable="true" ondrag="myFunction(event)">Sit in Coffee</div>
+        <div class="tabs tab4 col-md-2 col-sm-1" id="tab-TeaSitIn" draggable="true" ondrag="myFunction(event)">Sit in Tea</div>
+        <div class="tabs tab5 col-md-2 col-sm-1" id="tab-ColdDrink" draggable="true" ondrag="myFunction(event)">Cold Drinks</div>
+        <div class="tabs tab6 col-md-2 col-sm-1" id="tab-Food" draggable="true" ondrag="myFunction(event)">Food</div>
+        <div class="tabs tab6 col-md-2 col-sm-1" id="tab-Retail" draggable="true" ondrag="myFunction(event)">Retail</div>
+      </div>
+
+      <!-- CONTENTS -->
+      <div class="row productBlockBackground" id="product-background">
+        <div class="col-md-12 col-sm-12 col-xs-12 ">
 
           <% Product.type_map.keys.each do |type| %>
             <%= content_tag :div, class: 'row tab-content', id: type.split('::').last do %>
@@ -51,8 +58,8 @@
             <% end %>
           <% end %>
 
-				</div>
-			</div>
+        </div>
+      </div>
 
       <!-- Modal -->
       <div class="modal fade" id="managerModal" role="dialog">
@@ -74,66 +81,66 @@
 
         </div>
       </div>
-		</div>
+    </div>
 
-		<!-- THE TOTAL AND ITEM LIST PANEL-->
-		<div class="col-md-3 col-sm-12 col-xs-12">
-			<div class="row productBlockBackground2">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num"value="1">1</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="2">2</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="3">3</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3" id="5euro"><button class="moneyBtn"><span class="euro">€</span>5</button></div>
-					</div><br/>
-					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="4">4</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="5">5</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="6">6</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3" id="10euro"><button class="moneyBtn"><span class="euro">€</span>10</button></div>
-					</div><br/>
-					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="7">7</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="8">8</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="9">9</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3" id="20euro"><button class="moneyBtn"><span class="euro">€</span>20</button ></div>
-					</div><br/>
-					<div class="row"> 
-						<div class="col-md-3 col-sm-3 col-xs-3" id="cBtn"><button class="cBtn" id="delete">c</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn zero num" value="0">0</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3 period"><button class="tillBtn num">.</button></div>
-						<div class="col-md-3 col-sm-3 col-xs-3" data-toggle="modal" data-target="#managerModal"><button class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
-					</div><br/>
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12"><div type="button" id="cashBtn">Cash</div></div>
-					</div><br/>
-					<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-6"><div type="button" id="credit-button"  class="creditBtn">Credit</div></div>
-						<div class="col-md-6 col-sm-6 col-xs-6"><div type="button" id="loyalty-button" class="LoyaltyBtn">Loyalty Card</div></div>
-					</div>
-				</div>
-			</div>
-			<div class="row text-center">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<table class="table table-hover ">
-						<thead>
-							<tr><th><div id="tillTotal"></div></th></tr>
-							<tr><th><div id="tillScreen"></div></th></tr>
-						</thead>
-						<tbody>
-							<tr><th><div id="tillList1"></div></th></tr>
-						<!-- 	<tr><td > 
-								<p class="tillList">Cappuccino</p>
-								<div class="tillList"><%=image_tag("/assets/subIcon.svg")%></div>
-								<p class="tillList">1</p>
-								<div class="tillList"><%=image_tag("/assets/addIcon.svg")%></div>
-								</td></tr>
-							<tr><td> </td></tr> -->
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- THE TOTAL AND ITEM LIST PANEL-->
+    <div class="col-md-3 col-sm-12 col-xs-12">
+      <div class="row productBlockBackground2">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num"value="1">1</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="2">2</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="3">3</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3" id="5euro"><button class="moneyBtn"><span class="euro">€</span>5</button></div>
+          </div><br/>
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="4">4</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="5">5</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="6">6</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3" id="10euro"><button class="moneyBtn"><span class="euro">€</span>10</button></div>
+          </div><br/>
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="7">7</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="8">8</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn num" value="9">9</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3" id="20euro"><button class="moneyBtn"><span class="euro">€</span>20</button ></div>
+          </div><br/>
+          <div class="row"> 
+            <div class="col-md-3 col-sm-3 col-xs-3" id="cBtn"><button class="cBtn" id="delete">c</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3"><button class="tillBtn zero num" value="0">0</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3 period"><button class="tillBtn num">.</button></div>
+            <div class="col-md-3 col-sm-3 col-xs-3" data-toggle="modal" data-target="#managerModal"><button class="moneyBtn"> <%= glyphicon "cog", class: "whitecog"%> </button></div>
+          </div><br/>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12"><div type="button" id="cashBtn">Cash</div></div>
+          </div><br/>
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6"><div type="button" id="credit-button"  class="creditBtn">Credit</div></div>
+            <div class="col-md-6 col-sm-6 col-xs-6"><div type="button" id="loyalty-button" class="LoyaltyBtn">Loyalty Card</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <table class="table table-hover ">
+            <thead>
+              <tr><th><div id="tillTotal"></div></th></tr>
+              <tr><th><div id="tillScreen"></div></th></tr>
+            </thead>
+            <tbody>
+              <tr><th><div id="tillList1"></div></th></tr>
+              <!-- 	<tr><td > 
+                <p class="tillList">Cappuccino</p>
+                <div class="tillList"><%=image_tag("/assets/subIcon.svg")%></div>
+                <p class="tillList">1</p>
+                <div class="tillList"><%=image_tag("/assets/addIcon.svg")%></div>
+                </td></tr>
+                <tr><td> </td></tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

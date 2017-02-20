@@ -1,1 +1,22 @@
-Users!
+<div class="container-fluid">
+  <div class="row">
+    <br/>
+    <div class="col-md-12 col-sm-12 col-xs-12 BreweryBanner">
+      <p id="shopTitle1">The</p>
+      <p id="shopTitle2">Brewery</p>
+    </div>
+  </div>
+  <br/>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= User.find_each do |user| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to switch_user_path(user_id: user.id), method: :post do %>
+          <%= image_tag (user.image.url :large), class: 'heads' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

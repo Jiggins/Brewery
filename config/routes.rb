@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'login', to: 'login#index'
   get 'users', to: 'login#users'
   get 'signout', to: 'sessions#destroy', as: 'signout'
+  post 'switch_user', to: 'login#switch_user'
 
   resources :sessions, only: [:create, :delete]
 
