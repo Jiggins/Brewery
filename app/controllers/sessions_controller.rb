@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :force_login
+  skip_before_action :force_login
 
   def create
     account = Account.from_omniauth(env["omniauth.auth"])
