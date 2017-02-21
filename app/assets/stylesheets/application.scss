@@ -11,7 +11,7 @@
 	display:inline-block
 }
 @mixin monoFont(){
-	src: url('/assets/SavoyeLETPlain.ttf')
+	src: font-url('SavoyeLETPlain.ttf')
 	// font-family: 'Inconsolata', monospace;
 
 }
@@ -19,7 +19,7 @@
 body{
 	// background-color: #a79c80;
 	// background-color: #dab38b;
-	background-image: url("CoffeeBeansBackground.jpg");
+	background-image: image-url("CoffeeBeansBackground.jpg");
 	background-size:100%;
 }
 
